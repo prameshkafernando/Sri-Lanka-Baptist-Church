@@ -492,7 +492,7 @@ h4, h5, h6  { font-family: 'Poppins', sans-serif; }
 }
 .timeline-year {
     font-family:   'Cinzel', serif;
-    font-size:     2.4rem;
+    font-size:     1.4rem;
     font-weight:   700;
     color:         var(--deep-blue);
     margin-bottom: 14px;
