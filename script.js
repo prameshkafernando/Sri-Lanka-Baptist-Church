@@ -122,47 +122,62 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* ===============================
-       ACTIVE NAVIGATION
-    =============================== */
+/* ===============================
+   ACTIVE NAVIGATION
+=============================== */
 
-    const currentPage = window.location.pathname.split("/").pop();
+const currentPage = window.location.pathname.split("/").pop();
 
-    document.querySelectorAll(".nav-links a").forEach(link => {
+document.querySelectorAll(".nav-links a").forEach(link => {
 
-        const href = link.getAttribute("href");
+    const href = link.getAttribute("href");
 
-        link.classList.remove("active");
+    link.classList.remove("active");
 
-        if (href === currentPage) {
+    if (href === currentPage) {
 
-            link.classList.add("active");
-
-        }
-
-    });
-
-    // Highlight Ministries when on a ministry page
-
-    const ministryPages = [
-        "SLBS.html",
-        "BYPA.html",
-        "BWL.html",
-        "BMF.html"
-    ];
-
-    if (ministryPages.includes(currentPage)) {
-
-        const ministryLink = document.querySelector(".dropdown > a");
-
-        if (ministryLink) {
-
-            ministryLink.classList.add("active");
-
-        }
+        link.classList.add("active");
 
     }
 
+});
+
+// Highlight About Us when on About, History or Carey College pages
+
+const aboutPages = [
+    "about.html",
+    "history.html",
+    "careycollege.html"
+];
+
+if (aboutPages.includes(currentPage)) {
+
+    document
+        .querySelector('a[href="about.html"]')
+        .classList.add("active");
+
+}
+
+// Highlight Ministries when on a ministry page
+
+const ministryPages = [
+    "SLBS.html",
+    "BYPA.html",
+    "BWL.html",
+    "BMF.html"
+];
+
+if (ministryPages.includes(currentPage)) {
+
+    const ministryLink = document.querySelectorAll(".nav-links .dropdown > a")[1];
+
+    if (ministryLink) {
+
+        ministryLink.classList.add("active");
+
+    }
+
+}
     /* ===============================
        CHURCH SEARCH
     =============================== */
@@ -279,3 +294,123 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
+/* -------- CONTACT FORM -------- */
+(function () {
+    'use strict';
+
+    /* -------- Donation Amount Preset Buttons -------- */
+    const amountBtns  = document.querySelectorAll('.amount-btn');
+    const amountInput = document.getElementById('d-amount');
+
+    amountBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            amountBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const val = btn.dataset.amount;
+            if (val === 'custom') {
+                amountInput.value = '';
+                amountInput.focus();
+            } else {
+                amountInput.value = val;
+            }
+        });
+    });
+
+    /* Allow typing in the amount field to deselect presets */
+    amountInput?.addEventListener('input', () => {
+        const typed = parseInt(amountInput.value, 10);
+        amountBtns.forEach(btn => {
+            const preset = parseInt(btn.dataset.amount, 10);
+            btn.classList.toggle('active', preset === typed);
+        });
+    });
+
+    /* -------- General Inquiry Form -------- */
+    const generalForm = document.getElementById('generalForm');
+    const generalMsg  = document.getElementById('generalMsg');
+
+    generalForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const name    = document.getElementById('g-name').value.trim();
+        const email   = document.getElementById('g-email').value.trim();
+        const subject = document.getElementById('g-subject').value;
+        const message = document.getElementById('g-message').value.trim();
+
+        if (!name || !email || !subject || !message) {
+            showMsg(generalMsg, 'error', 'Please fill in all required fields.');
+            return;
+        }
+        if (!isValidEmail(email)) {
+            showMsg(generalMsg, 'error', 'Please enter a valid email address.');
+            return;
+        }
+
+        /* Replace this block with your backend / FormSubmit / EmailJS call */
+        const btn = generalForm.querySelector('.cf-submit');
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…';
+        generalForm.submit();
+        setTimeout(() => {
+            showMsg(generalMsg, 'success', '✓ Thank you! Your message has been sent. We will be in touch soon.');
+            generalForm.reset();
+            btn.disabled = false;
+            btn.innerHTML = 'Send Message &nbsp;<i class="fas fa-paper-plane"></i>';
+        }, 1400);
+    });
+
+    /* -------- Donation Form -------- */
+    const donationForm = document.getElementById('donationForm');
+    const donationMsg  = document.getElementById('donationMsg');
+
+    donationForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const name    = document.getElementById('d-name').value.trim();
+        const email   = document.getElementById('d-email').value.trim();
+        const purpose = document.getElementById('d-purpose').value;
+        const amount  = document.getElementById('d-amount').value;
+        const method  = document.getElementById('d-method').value;
+
+        if (!name || !email || !purpose || !amount || !method) {
+            showMsg(donationMsg, 'error', 'Please fill in all required fields.');
+            return;
+        }
+        if (!isValidEmail(email)) {
+            showMsg(donationMsg, 'error', 'Please enter a valid email address.');
+            return;
+        }
+        if (parseFloat(amount) <= 0) {
+            showMsg(donationMsg, 'error', 'Please enter a valid donation amount.');
+            return;
+        }
+
+        /* Replace this block with your backend / FormSubmit / EmailJS call */
+        const btn = donationForm.querySelector('.cf-submit');
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting…';
+
+        setTimeout(() => {
+            showMsg(donationMsg, 'success', '✓ Thank you for your generous support! A confirmation has been sent to your email.');
+            donationForm.reset();
+            amountBtns.forEach(b => b.classList.remove('active'));
+            btn.disabled = false;
+            btn.innerHTML = 'Submit Donation <i class="fas fa-heart"></i>';
+        }, 1400);
+    });
+
+    /* -------- Helpers -------- */
+    function showMsg(el, type, text) {
+        if (!el) return;
+        el.className = 'cf-msg ' + type;
+        el.textContent = text;
+        setTimeout(() => { el.textContent = ''; el.className = 'cf-msg'; }, 6000);
+    }
+
+    function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+})();

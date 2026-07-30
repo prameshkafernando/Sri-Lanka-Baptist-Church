@@ -251,23 +251,6 @@ h4, h5, h6  { font-family: 'Poppins', sans-serif; }
     background: rgba(255,255,255,.18);
     color:      var(--light-gold);
 }
-.language-switch { display: flex; gap: 5px; }
-.language-switch button {
-    background:    transparent;
-    border:        1px solid rgba(255,255,255,.45);
-    color:         #fff;
-    padding:       3px 9px;
-    cursor:        pointer;
-    border-radius: 4px;
-    font-size:     0.77rem;
-    font-family:   'Poppins', sans-serif;
-    transition:    var(--transition);
-}
-.language-switch button:hover {
-    background:   var(--gold);
-    color:        var(--darker-blue);
-    border-color: var(--gold);
-}
 
 /* ============================================================
    8. NAVBAR
@@ -529,9 +512,10 @@ h4, h5, h6  { font-family: 'Poppins', sans-serif; }
    ============================================================ */
 .committee-grid {
     display:               grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap:                   28px;
 }
+
 .member-card {
     background:    #fff;
     border-radius: 12px;
@@ -539,6 +523,14 @@ h4, h5, h6  { font-family: 'Poppins', sans-serif; }
     box-shadow:    var(--shadow);
     transition:    var(--transition);
     border-bottom: 4px solid transparent;
+    grid-column:   span 2;
+}
+.committee-grid .member-card:nth-child(4) {
+    grid-column: 2 / span 2;
+}
+
+.committee-grid .member-card:nth-child(5) {
+    grid-column: 4 / span 2;
 }
 .member-card:hover {
     transform:    translateY(-7px);
@@ -556,10 +548,32 @@ h4, h5, h6  { font-family: 'Poppins', sans-serif; }
 .member-info { padding: 20px 20px 24px; text-align: center; }
 .member-info h3 {
     color:         var(--deep-blue);
-    font-size:     .98rem;
+    font-size:     .99rem;
     margin-bottom: 5px;
 }
-.member-info p { color: var(--text-light); font-size: .88rem; }
+.member-info p { color: var(--text-dark); font-size: .93rem; }
+
+.church-detail {
+    align-items:   center;
+    gap:           10px;
+    margin-bottom: 9px;
+    font-size:     .86rem;
+    color:         var(--text-light);
+    line-height:   1.5;
+}
+.church-detail i {
+    color:      var(--primary-blue);
+    font-size:  .82rem;
+    flex-shrink: 0;
+    margin-top: 3px;
+    width:      14px;
+    text-align: center;
+}
+.church-detail a {
+    color:      var(--text-light);
+    transition: var(--transition);
+}
+.church-detail a:hover { color: var(--primary-blue); }
 
 /* ============================================================
    13. MINISTRIES
