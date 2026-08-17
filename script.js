@@ -121,29 +121,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-
 /* ===============================
    ACTIVE NAVIGATION
 =============================== */
 
-const currentPage = window.location.pathname.split("/").pop();
+// Get clean filename or default to 'index.html' if at root
+let currentPage = window.location.pathname.split("/").filter(Boolean).pop() || "index.html";
+
+// Normalize to always include .html for comparison if extension is missing
+if (!currentPage.includes(".")) {
+    currentPage += ".html";
+}
 
 document.querySelectorAll(".nav-links a").forEach(link => {
-
     const href = link.getAttribute("href");
-
     link.classList.remove("active");
 
     if (href === currentPage) {
-
         link.classList.add("active");
-
     }
-
 });
 
-// Highlight About Us when on About, History or Carey College pages
-
+// Highlight About Us when on About, History, or Carey College pages
 const aboutPages = [
     "about.html",
     "history.html",
@@ -151,15 +150,13 @@ const aboutPages = [
 ];
 
 if (aboutPages.includes(currentPage)) {
-
-    document
-        .querySelector('a[href="about.html"]')
-        .classList.add("active");
-
+    const aboutLink = document.querySelector('a[href="about.html"]');
+    if (aboutLink) {
+        aboutLink.classList.add("active");
+    }
 }
 
 // Highlight Ministries when on a ministry page
-
 const ministryPages = [
     "SLBS.html",
     "BYPA.html",
@@ -168,16 +165,12 @@ const ministryPages = [
 ];
 
 if (ministryPages.includes(currentPage)) {
-
     const ministryLink = document.querySelectorAll(".nav-links .dropdown > a")[1];
-
     if (ministryLink) {
-
         ministryLink.classList.add("active");
-
     }
-
 }
+
     /* ===============================
        CHURCH SEARCH
     =============================== */
