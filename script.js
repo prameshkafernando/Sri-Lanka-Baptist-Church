@@ -120,56 +120,60 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     }
-
+    
 /* ===============================
-   ACTIVE NAVIGATION
+   ACTIVE NAVIGATION  –  Fixed
 =============================== */
+(function () {
+    'use strict';
 
-// Get clean filename or default to 'index.html' if at root
-let currentPage = window.location.pathname.split("/").filter(Boolean).pop() || "index.html";
+    const rawSegment =
+        window.location.pathname
+            .split('/')
+            .filter(Boolean)
+            .pop() || 'index';
 
-// Normalize to always include .html for comparison if extension is missing
-if (!currentPage.includes(".")) {
-    currentPage += ".html";
-}
+    const currentPage = rawSegment.replace(/\.html$/i, '').toLowerCase();
 
-document.querySelectorAll(".nav-links a").forEach(link => {
-    const href = link.getAttribute("href");
-    link.classList.remove("active");
-
-    if (href === currentPage) {
-        link.classList.add("active");
+    /* ── Helper: normalise an href the same way ───────────────────── */
+    function normHref(href) {
+        if (!href || href === '#' || /^(https?:|mailto:)/.test(href)) return null;
+        const seg = href.split('/').filter(Boolean).pop() || 'index';
+        return seg.replace(/\.html$/i, '').toLowerCase();
     }
-});
 
-// Highlight About Us when on About, History, or Carey College pages
-const aboutPages = [
-    "about.html",
-    "history.html",
-    "careycollege.html"
-];
+    /* ── Remove all active states ────────────────────────────────── */
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
 
-if (aboutPages.includes(currentPage)) {
-    const aboutLink = document.querySelector('a[href="about.html"]');
-    if (aboutLink) {
-        aboutLink.classList.add("active");
+    /* ── Highlight the matching direct link ───────────────────────── */
+    document.querySelectorAll('.nav-links a').forEach(a => {
+        if (normHref(a.getAttribute('href')) === currentPage) {
+            a.classList.add('active');
+        }
+    });
+
+    /* ── About Us group ───────────────────────────────────────────── */
+    const aboutGroup = ['about', 'history', 'careycollege'];
+    if (aboutGroup.includes(currentPage)) {
+        // Find the trigger by href, not by position
+        const aboutTrigger = document.querySelector(
+            '.nav-links a[href="about.html"], .nav-links a[href="about"]'
+        );
+        if (aboutTrigger) aboutTrigger.classList.add('active');
     }
-}
 
-// Highlight Ministries when on a ministry page
-const ministryPages = [
-    "SLBS.html",
-    "BYPA.html",
-    "BWL.html",
-    "BMF.html"
-];
-
-if (ministryPages.includes(currentPage)) {
-    const ministryLink = document.querySelectorAll(".nav-links .dropdown > a")[1];
-    if (ministryLink) {
-        ministryLink.classList.add("active");
+    /* ── Ministries group ─────────────────────────────────────────── */
+    const ministryGroup = ['slbs', 'bypa', 'bwl', 'bmf'];
+    if (ministryGroup.includes(currentPage)) {
+        // Find the trigger by text content — immune to DOM-order changes
+        document.querySelectorAll('.nav-links .dropdown > a').forEach(a => {
+            if (a.textContent.trim().toLowerCase().startsWith('ministr')) {
+                a.classList.add('active');
+            }
+        });
     }
-}
+
+})();
 
     /* ===============================
        CHURCH SEARCH
