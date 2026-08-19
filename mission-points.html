@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sri Lanka Baptist Church – Mission points and mission stations across Sri Lanka, grouped by zone, with the churches that oversee them.">
+    <title>Mission Points | Sri Lanka Baptist Church</title>
+
+    <link rel="stylesheet" href="CSS/global.css">
+    <link rel="stylesheet" href="CSS/churches.css?v=20260819">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- AOS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+</head>
+
+<body>
+
+<!-- ===================== HEADER ===================== -->
+<header>
+    <div class="top-header">
+        <div class="container">
+            <div class="top-left">
+                <a href="mailto:slbc@srilankabaptistchurch.lk"><i class="fas fa-envelope"></i> slbc@srilankabaptistchurch.lk</a>
+            </div>
+            <div class="top-right">
+                <a href="https://www.facebook.com/p/Sri-Lanka-Baptist-Church-61569196400970/"
+                   target="_blank" rel="noopener" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://youtube.com/@baptistchurchsrilanka?si=beuBPx-tl2Hs2eVi" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.jpg" alt="Sri Lanka Baptist Church Logo">
+                <h2>Sri Lanka Baptist Church</h2>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="about.html">About Us <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="about.html">About SLBC</a></li>
+                        <li><a href="history.html">Our History</a></li>
+                        <li><a href="careycollege.html">Carey College</a></li>
+                    </ul>
+                </li>
+                <li><a href="churches.html">Churches</a></li>
+                <li><a href="mission-points.html" class="active">Mission Points</a></li>
+                <li class="dropdown">
+                    <a href="#">Ministries <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="SLBS.html">Sunday School</a></li>
+                        <li><a href="BYPA.html">Young People's Auxiliary</a></li>
+                        <li><a href="BWL.html">Women's League</a></li>
+                        <li><a href="BMF.html">Men's Fellowship</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="menu-btn" aria-label="Open menu" role="button" tabindex="0">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- ===================== PAGE HERO ===================== -->
+<section class="page-hero churches-hero">
+    <div class="page-hero-content" data-aos="fade-up">
+        <span class="section-eyebrow">Reaching Further</span>
+        <h1>Mission Points</h1>
+        <p>Smaller congregations and outreach stations, each cared for by one of our churches, carrying the gospel into new communities across the island.</p>
+    </div>
+</section>
+
+<!-- ===================== BREADCRUMB ===================== -->
+<div style="background:var(--light-bg); padding:14px 0; border-bottom:1px solid var(--border);">
+    <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb"
+             style="justify-content:flex-start; opacity:1;">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <span style="color:var(--text-light);">/</span>
+            <span style="color:var(--deep-blue); font-weight:600;">Mission Points</span>
+        </nav>
+    </div>
+</div>
+
+<!-- ===================== STATS BAR (counts computed from data) ===================== -->
+<div class="churches-stats" data-aos="fade-up">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number" id="statTotal">0</div>
+                <div class="stat-label">Mission Points</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="statZones">0</div>
+                <div class="stat-label">Zones Reached</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="statDistricts">0</div>
+                <div class="stat-label">Districts Reached</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="statChurches">0</div>
+                <div class="stat-label">Overseeing Churches</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== SEARCH BAR (sticky) ===================== -->
+<div class="search-bar-wrap" id="directory">
+    <div class="container">
+        <div class="search-bar-inner">
+
+            <div class="church-search">
+                <i class="fas fa-search"></i>
+                <input
+                    type="text"
+                    id="mpSearchInput"
+                    placeholder="Search mission points by name or church…"
+                    aria-label="Search mission points">
+            </div>
+
+            <select id="zoneFilter" aria-label="Filter by zone">
+                <option value="">All Zones</option>
+                <!-- populated from ZONES in churches-data.js -->
+            </select>
+
+            <select id="districtFilter" aria-label="Filter by district">
+                <option value="">All Districts</option>
+                <!-- populated from DISTRICTS in churches-data.js -->
+            </select>
+
+            <span class="search-count" id="searchCount">
+                Showing <span id="visibleCount">0</span> of <span id="totalCount">0</span> mission points
+            </span>
+
+        </div>
+    </div>
+</div>
+
+<!-- ===================== MISSION POINT GRID (rendered by JS) ===================== -->
+<div class="container">
+<div class="church-grid" id="mpGrid">
+    <!-- Cards are generated automatically — see churches-data.js (MISSION_POINTS) to add/edit -->
+
+    <div class="no-results" id="noResults" style="display:none;">
+        <i class="fas fa-search"></i>
+        <p>No mission points found matching your search.</p>
+        <button onclick="clearSearch()" class="btn btn-outline" style="font-size:.88rem;padding:10px 24px;">
+            Clear Search
+        </button>
+    </div>
+</div>
+</div><!-- /container -->
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+    <div class="container footer-grid">
+
+        <div class="footer-column">
+            <img src="images/logo.jpg" alt="Sri Lanka Baptist Church Logo" class="footer-logo">
+            <h3>Sri Lanka Baptist Church</h3>
+            <p>Preach the word. Reach the world.</p>
+        </div>
+
+        <div class="footer-column">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="churches.html">Churches</a></li>
+                <li><a href="mission-points.html">Mission Points</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h4>Ministries</h4>
+            <ul>
+                <li><a href="SLBS.html">Sunday School</a></li>
+                <li><a href="BYPA.html">Young People's Auxiliary</a></li>
+                <li><a href="BWL.html">Women's League</a></li>
+                <li><a href="BMF.html">Men's Fellowship</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h4>Contact</h4>
+            <p><a href="mailto:info@srilankabaptistchurch.lk"><i class="fas fa-envelope"></i> info@srilankabaptistchurch.lk</a></p>
+            <p><a href="tel:+94777675019"><i class="fas fa-phone"></i> +94 77 767 5019</a></p>
+            <div class="footer-social">
+                <a href="https://www.facebook.com/p/Sri-Lanka-Baptist-Church-61569196400970/"
+                   target="_blank" rel="noopener" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://youtube.com/@baptistchurchsrilanka?si=beuBPx-tl2Hs2eVi" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+    </div>
+    <div class="footer-bottom">
+        &copy; 2026 Sri Lanka Baptist Church. All Rights Reserved.
+    </div>
+</footer>
+
+<!-- FACEBOOK FLOAT -->
+<a href="https://www.facebook.com/p/Sri-Lanka-Baptist-Church-61569196400970/"
+   class="fb-float" target="_blank" rel="noopener" aria-label="Visit our Facebook page">
+    <i class="fab fa-facebook-f"></i>
+</a>
+
+<!-- BACK TO TOP -->
+<button id="topBtn" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<!-- AOS -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<!-- GLOBAL SCRIPT -->
+<script src="script.js"></script>
+
+<!-- MISSION POINT / CHURCH DATA (single source of truth — shared with churches.html) -->
+<script src="churches-data.js?v=20260819"></script>
+
+<!-- PAGE SCRIPT: render cards, search + zone + district filter, sticky bar -->
+<script>
+(function () {
+    'use strict';
+
+    const grid            = document.getElementById('mpGrid');
+    const noResults        = document.getElementById('noResults');
+    const searchInput      = document.getElementById('mpSearchInput');
+    const zoneFilter       = document.getElementById('zoneFilter');
+    const districtFilter   = document.getElementById('districtFilter');
+    const visibleCountEl   = document.getElementById('visibleCount');
+    const totalCountEl     = document.getElementById('totalCount');
+
+    /* ---- 1. Populate the zone + district <select> options ---- */
+    Object.keys(ZONES).forEach(zoneKey => {
+        const opt = document.createElement('option');
+        opt.value = zoneKey;
+        opt.textContent = ZONES[zoneKey].name;
+        zoneFilter.appendChild(opt);
+    });
+    Object.keys(DISTRICTS).forEach(distKey => {
+        const opt = document.createElement('option');
+        opt.value = distKey;
+        opt.textContent = DISTRICTS[distKey];
+        districtFilter.appendChild(opt);
+    });
+
+    /* ---- 2. Stats bar (computed from real data, not guessed) ---- */
+    document.getElementById('statTotal').textContent = MISSION_POINTS.length;
+    document.getElementById('statZones').textContent =
+        new Set(MISSION_POINTS.map(mp => mp.zone).filter(Boolean)).size;
+    document.getElementById('statDistricts').textContent =
+        new Set(MISSION_POINTS.map(mp => mp.district).filter(Boolean)).size;
+    document.getElementById('statChurches').textContent =
+        new Set(MISSION_POINTS.map(mp => mp.church).filter(Boolean)).size;
+
+    /* ---- 3. Build one mission point card's HTML (reuses the same
+       .church-card / .church-zone / .church-more-info classes as
+       churches.html, so the two directories look and feel the same) ---- */
+    function cardHTML(mp) {
+        const zone = ZONES[mp.zone];
+        const districtLabel = DISTRICTS[mp.district] || '';
+        const hostName = mp.hostChurch ? mp.hostChurch.name : '';
+        const searchBlob = [
+            mp.name, hostName, zone ? zone.name : '', districtLabel, mp.supervisor
+        ].filter(Boolean).join(' ').toLowerCase();
+
+        const districtRow = districtLabel
+            ? `<div class="church-detail church-district-text"><i class="fas fa-map"></i><span>${districtLabel} District</span></div>`
+            : '';
+
+        const hostRow = hostName
+            ? `<div class="church-detail"><i class="fas fa-church"></i><span>Under ${hostName}</span></div>`
+            : '';
+
+        const supervisorRow = mp.supervisor
+            ? `<div class="church-detail"><i class="fas fa-user-tie"></i><span>${mp.supervisor}</span></div>`
+            : '';
+
+        return `
+        <div class="church-card" data-name="${searchBlob}" data-zone="${mp.zone || ''}" data-district="${mp.district || ''}">
+            <div class="church-logo-wrap">
+                <div class="church-logo-fallback"><i class="fas fa-map-signs"></i></div>
+                <span class="church-zone">${zone ? zone.short : ''}</span>
+            </div>
+            <div class="church-body">
+                <h3 class="church-name">${mp.name}</h3>
+                ${hostRow}
+                ${districtRow}
+                ${supervisorRow}
+            </div>
+            <div class="church-footer">
+                <a href="mission-point-profile.html?id=${mp.id}" class="church-more-info">
+                    More Info <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>`;
+    }
+
+    /* ---- 4. Render all cards once ---- */
+    grid.insertAdjacentHTML('afterbegin', MISSION_POINTS.map(cardHTML).join(''));
+    const cards = grid.querySelectorAll('.church-card');
+    totalCountEl.textContent = cards.length;
+
+    /* ---- 5. Search + zone + district filter (all combine with AND) ---- */
+    function filterMissionPoints() {
+        const query    = searchInput.value.toLowerCase().trim();
+        const zone     = zoneFilter.value;
+        const district = districtFilter.value;
+        let shown = 0;
+
+        cards.forEach(card => {
+            const name = card.dataset.name || '';
+            const cardZone = card.dataset.zone || '';
+            const cardDistrict = card.dataset.district || '';
+            const matchesSearch   = !query    || name.includes(query);
+            const matchesZone     = !zone     || cardZone === zone;
+            const matchesDistrict = !district || cardDistrict === district;
+
+            if (matchesSearch && matchesZone && matchesDistrict) {
+                card.style.display = '';
+                shown++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        visibleCountEl.textContent = shown;
+        noResults.style.display = shown === 0 ? 'block' : 'none';
+    }
+
+    searchInput.addEventListener('input', filterMissionPoints);
+    zoneFilter.addEventListener('change', filterMissionPoints);
+    districtFilter.addEventListener('change', filterMissionPoints);
+
+    window.clearSearch = function () {
+        searchInput.value    = '';
+        zoneFilter.value     = '';
+        districtFilter.value = '';
+        filterMissionPoints();
+    };
+
+    filterMissionPoints();
+
+    /* ---- 6. Sticky search bar, with a self-correcting fallback ----
+       Identical pattern to churches.html — see the detailed comment
+       there. Kept page-scoped; no global.css / header changes. */
+    (function () {
+        const navbar = document.querySelector('.navbar');
+        const bar    = document.querySelector('.search-bar-wrap');
+        if (!bar) return;
+
+        const spacer = document.createElement('div');
+        spacer.className = 'search-bar-spacer';
+        bar.parentNode.insertBefore(spacer, bar.nextSibling);
+
+        let offset        = 76;
+        let flowTop        = null;
+        let fallbackNeeded = null;
+
+        function computeOffset() {
+            offset = (navbar && window.innerWidth > 600)
+                ? navbar.getBoundingClientRect().height
+                : 0;
+            bar.style.top = offset + 'px';
+        }
+
+        function measureFlowTop() {
+            if (bar.classList.contains('search-bar-pinned')) return;
+            flowTop = bar.getBoundingClientRect().top + window.scrollY;
+        }
+
+        function setPinned(on) {
+            if (on === bar.classList.contains('search-bar-pinned')) return;
+            if (on) {
+                spacer.style.height = bar.offsetHeight + 'px';
+                bar.classList.add('search-bar-pinned');
+                spacer.classList.add('active');
+            } else {
+                bar.classList.remove('search-bar-pinned');
+                spacer.classList.remove('active');
+                measureFlowTop();
+            }
+        }
+
+        function handleScroll() {
+            if (flowTop === null) return;
+            const pastThreshold = window.scrollY + offset >= flowTop - 1;
+
+            if (fallbackNeeded === null) {
+                if (!pastThreshold) return;
+                requestAnimationFrame(() => {
+                    const stillPastThreshold = window.scrollY + offset >= flowTop - 1;
+                    if (!stillPastThreshold) return;
+                    const r = bar.getBoundingClientRect();
+                    fallbackNeeded = Math.abs(r.top - offset) > 3;
+                    if (fallbackNeeded) setPinned(true);
+                });
+                return;
+            }
+
+            if (fallbackNeeded) setPinned(pastThreshold);
+        }
+
+        function init() {
+            computeOffset();
+            measureFlowTop();
+            fallbackNeeded = null;
+            handleScroll();
+        }
+
+        window.addEventListener('load', init);
+        window.addEventListener('resize', () => {
+            computeOffset();
+            if (!bar.classList.contains('search-bar-pinned')) measureFlowTop();
+            handleScroll();
+        });
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        init();
+    })();
+})();
+</script>
+
+</body>
+</html>

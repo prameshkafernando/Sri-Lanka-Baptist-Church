@@ -148,6 +148,25 @@
 
 /* ============================================================
    4. SEARCH + FILTER BAR  (sticky below navbar)
+   ------------------------------------------------------------
+   FIX (Aug 2026) — kept entirely inside this file / churches.html,
+   global.css is NOT touched.
+
+   Root cause of "the bar scrolls away with the page": global.css
+   sets `body { overflow-x: hidden; }` sitewide. Several browsers —
+   most notably Safari — have a long-standing bug where a sticky
+   element simply fails to stick (behaves as if position were
+   static) when ANY ancestor, including body, has a non-visible
+   overflow. That rule can't be edited here, so instead of fighting
+   it in CSS alone, churches.html now runs a small self-checking
+   script: it lets native `position: sticky` do the work first, and
+   only if it detects (by actually measuring the element after
+   scrolling past the trigger point) that native sticky did NOT
+   hold, it force-pins the bar with `.search-bar-pinned`
+   (position: fixed) instead. In ordinary browsers where native
+   sticky works, that fallback never engages and this is a plain
+   sticky bar as before. See the script at the bottom of
+   churches.html.
    ============================================================ */
 
 .search-bar-wrap {
@@ -159,6 +178,28 @@
     border-bottom: 2px solid var(--border);
     padding:       16px 0;
     box-shadow:    0 4px 16px rgba(0,0,0,.07);
+}
+
+/* Engaged only by JS, only when native sticky has been detected not
+   to be holding. Spans the full viewport width the same way the
+   sticky bar visually does, since only the inner .search-bar-inner
+   is width-constrained by its own nested .container. */
+.search-bar-wrap.search-bar-pinned {
+    position: fixed;
+    left:     0;
+    right:    0;
+    width:    auto;
+}
+
+/* Reserves the bar's height in the document flow while it's pinned,
+   so the grid below doesn't jump upward. Zero-height (and inert)
+   until JS activates it. */
+.search-bar-spacer {
+    display: none;
+    height:  0;
+}
+.search-bar-spacer.active {
+    display: block;
 }
 .search-bar-inner {
     display:     flex;
@@ -181,7 +222,8 @@
     font-size:   .95rem;
     pointer-events: none;
 }
-#churchSearchInput {
+#churchSearchInput,
+#mpSearchInput {
     width:         100%;
     padding:       12px 16px 12px 44px;
     border:        2px solid var(--border);
@@ -192,7 +234,8 @@
     background:    var(--light-bg);
     transition:    var(--transition);
 }
-#churchSearchInput:focus {
+#churchSearchInput:focus,
+#mpSearchInput:focus {
     outline:      none;
     border-color: var(--primary-blue);
     background:   #fff;
@@ -439,7 +482,7 @@
 /* --- Card Footer (FB link + More Info) --- */
 .church-footer {
     margin-top:    16px;
-    padding:       0 20px 16px;
+    padding:       14px 20px;
     display:       flex;
     gap:           10px;
     align-items:   center;
@@ -449,11 +492,11 @@
 .church-fb {
     display:       inline-flex;
     align-items:   center;
-    gap:           5px;
+    gap:           6px;
     padding:       5px 12px;
     background:    #1877F2;
     color:         #fff;
-    border-radius: 5px;
+    border-radius: 6px;
     font-size:     .74rem;
     font-weight:   600;
     transition:    var(--transition);
@@ -468,12 +511,12 @@
 .church-more-info {
     display:       inline-flex;
     align-items:   center;
-    gap:           5px;
+    gap:           6px;
     padding:       5px 12px;
     background:    transparent;
     border:        2px solid var(--deep-blue);
     color:         var(--deep-blue);
-    border-radius: 5px;
+    border-radius: 6px;
     font-size:     .74rem;
     font-weight:   600;
     transition:    var(--transition);
@@ -662,6 +705,96 @@
 }
 
 /* ============================================================
+   7b. MISSION POINT PROFILE PAGE  (mission-point-profile.html)
+   ------------------------------------------------------------
+   Reuses .profile-grid / .profile-card / .profile-section-title /
+   .profile-history / .church-* card classes above (mission points
+   render inside the same card/profile shell as churches) — only
+   the pieces unique to a mission point page live here.
+   ============================================================ */
+
+/* "Quick Facts" pair — Established + Location */
+.mp-info-grid {
+    display:               grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:                   16px;
+    margin-bottom:         34px;
+}
+.mp-info-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+.mp-info-card {
+    display:       flex;
+    gap:           14px;
+    align-items:   flex-start;
+    background:    var(--light-bg);
+    border:        1px solid var(--border);
+    border-radius: 10px;
+    padding:       18px 20px;
+}
+.mp-info-card i {
+    color:      var(--primary-blue);
+    font-size:  1.3rem;
+    margin-top: 2px;
+}
+.mp-info-card-label {
+    font-size:      .68rem;
+    font-weight:    700;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color:          var(--text-light);
+    margin-bottom:  4px;
+}
+.mp-info-card-value {
+    font-size:   .94rem;
+    color:       var(--text);
+    line-height: 1.5;
+}
+.mp-info-card-value.mp-pending {
+    color:      var(--text-light);
+    font-style: italic;
+}
+
+/* Host-church link row inside the mission point's side card */
+.mp-host-link {
+    display:         flex;
+    align-items:     center;
+    justify-content: space-between;
+    gap:             8px;
+    color:           var(--deep-blue);
+    font-weight:     600;
+    font-size:       .86rem;
+}
+.mp-host-link:hover { color: var(--primary-blue); }
+
+/* Donate call-to-action banner */
+.mp-donate-cta {
+    background:    linear-gradient(135deg, var(--darker-blue), var(--deep-blue));
+    border-radius: 14px;
+    padding:       34px 32px;
+    text-align:    center;
+    color:         #fff;
+    margin-bottom: 10px;
+}
+.mp-donate-cta i.fa-heart {
+    color:         var(--primary-red);
+    font-size:     1.7rem;
+    margin-bottom: 10px;
+}
+.mp-donate-cta h3 {
+    font-family:   'Cinzel', serif;
+    font-size:     1.25rem;
+    margin-bottom: 10px;
+}
+.mp-donate-cta p {
+    opacity:       .85;
+    font-size:     .92rem;
+    max-width:     440px;
+    margin:        0 auto 20px;
+    line-height:   1.7;
+}
+
+/* ============================================================
    8. RESPONSIVE
    ============================================================ */
 @media (max-width: 1024px) {
@@ -670,6 +803,7 @@
     .stat-item:nth-child(2)::after { display: none; }
     .profile-grid { grid-template-columns: 280px 1fr; gap: 28px; }
     .profile-stats-grid { grid-template-columns: repeat(3, 1fr); }
+    .mp-info-grid-3 { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 900px) {
@@ -691,6 +825,8 @@
     .church-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
     .profile-stats-grid { grid-template-columns: repeat(2, 1fr); }
     .profile-gallery { grid-template-columns: repeat(2, 1fr); }
+    .mp-info-grid { grid-template-columns: 1fr; }
+    .mp-info-grid-3 { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 600px) {

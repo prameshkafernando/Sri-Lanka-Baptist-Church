@@ -25,9 +25,22 @@
      MISSION_POINTS array — set "church" to the id of the church
      that oversees it, and it will automatically appear as a
      linked chip on that church's card and in its profile page.
+     Mission points also have a "gallery" array, same as churches
+     — add 3 to 6 image paths and they show on the mission point's
+     own profile page; leave it as [] for "photo coming soon" tiles.
    • Logos: drop the image into images/churches/ and point
      "logo" at it. If a church has no logo yet, set logo to null
      and a plain church icon will show instead — nothing breaks.
+   • Service times: add an optional "serviceTimes" object to any
+     church, e.g. serviceTimes: { sundayWorship: "8:00 AM & 6:00 PM",
+     bibleStudy: "Wednesdays, 6:30 PM", sundaySchool: "9:00 AM" }.
+     Any of the three keys can be left out — the profile page shows
+     "Not yet added" for whichever is missing. Leave the whole
+     object out entirely if none are known yet.
+   • Additional info: add an optional "additionalInfo" string to any
+     church for anything specific to that congregation (special
+     services, contact notes, etc.) — it renders as its own section
+     on the profile page. Leave it out if there's nothing to add.
    ============================================================ */
 
 /* ---------- ZONES -------------------------------------------- */
@@ -71,99 +84,113 @@ const MISSION_POINTS = [
         id: "mugunuwatawana",
         name: "Mugunuwatawana Mission Station",
         church: "madampe",
-        supervisor: "Rev. Malin Anthony",
-        description: "A brother appointed by the church resides there with his wife and serves. Worship services and prayer meetings are held."
+        supervisor: "Rev. Malith Andrady",
+        description: "A brother appointed by the church resides there with his wife and serves. Worship services and prayer meetings are held.",
+        gallery: [] // add 3-6 photo paths here later, e.g. "images/mission-points/mugunuwatawana/1.jpg"
     },
     {
         id: "minuwangoda",
         name: "Minuwangoda Mission Station",
         church: "hendala",
         supervisor: "Rev. S. Vigneswaran",
-        description: "Operates under the supervision of the Hendala Church; the ministry continues as a mission station."
+        description: "Operates under the supervision of the Hendala Church; the ministry continues as a mission station.",
+        gallery: [] // add 3-6 photo paths here later, e.g. "images/mission-points/minuwangoda/1.jpg"
     },
     {
         id: "anuradhapura",
         name: "Anuradhapura Mission Station",
         church: "chavakachcheri",
         supervisor: "Rev. V. Moorthy",
-        description: "Operates under the Chavakachcheri Church. Worship is held every Sunday."
+        description: "Operates under the Chavakachcheri Church. Worship is held every Sunday.",
+        gallery: [] // add 3-6 photo paths here later, e.g. "images/mission-points/anuradhapura/1.jpg"
     },
     {
         id: "trincomalee",
         name: "Trincomalee Mission Station",
         church: "beligodapitiya",
         supervisor: "Mission Committee",
-        description: "Maintained under the Mission Committee; a missionary resides in a rented house with his family and serves there. For five months of the year, the Beligodapitiya Church has also undertaken service at this station."
+        description: "Maintained under the Mission Committee; a missionary resides in a rented house with his family and serves there. For five months of the year, the Beligodapitiya Church has also undertaken service at this station.",
+        gallery: [] // add 3-6 photo paths here later, e.g. "images/mission-points/trincomalee/1.jpg"
     },
     {
         id: "aiyankulam",
         name: "Aiyankulam Mission Station",
         church: "kilinochchi",
         supervisor: "Rev. Sugunraj",
-        description: "Operates under the supervision of the Kilinochchi Church; a church worker resides there and serves."
+        description: "Operates under the supervision of the Kilinochchi Church; a church worker resides there and serves.",
+        gallery: [] // add 3-6 photo paths here later, e.g. "images/mission-points/aiyankulam/1.jpg"
     },
     {
         id: "vavuniya",
         name: "Vavuniya Mission Station",
         church: "kilinochchi",
         supervisor: "Rev. Sugunraj",
-        description: "Operates as a mission station under the Kilinochchi Church. A temporary missionary brother resides there and serves."
+        description: "Operates as a mission station under the Kilinochchi Church. A temporary missionary brother resides there and serves.",
+        gallery: [] // add 3-6 photo paths here later, e.g. "images/mission-points/vavuniya/1.jpg"
     },
     {
         id: "mullaitivu",
         name: "Mullaitivu Mission Station",
         church: "chavakachcheri",
         supervisor: "Rev. V. Moorthy",
-        description: "A missionary brother resides with his wife and child and serves there. With the support of Christian Mission Service, a free evening class is held for children in the area; a new person was baptized at the start of the year."
+        description: "A missionary brother resides with his wife and child and serves there. With the support of Christian Mission Service, a free evening class is held for children in the area; a new person was baptized at the start of the year.",
+        gallery: [] // add 3-6 photo paths here later, e.g. "images/mission-points/mullaitivu/1.jpg"
     },
     {
         id: "ilavalai",
         name: "Ilavalai Mission Station",
         church: "chavakachcheri",
         supervisor: "Rev. V. Moorthy",
-        description: "A missionary brother resides with his wife and child. Sunday worship is held at 9:30 a.m., followed by Sunday School. Building work has been completed and is in use."
+        description: "A missionary brother resides with his wife and child. Sunday worship is held at 9:30 a.m., followed by Sunday School. Building work has been completed and is in use.",
+        gallery: [] // add 3-6 photo paths here later, e.g. "images/mission-points/ilavalai/1.jpg"
     },
     {
         id: "atchuveli",
         name: "Atchuveli Mission Station",
         church: "chavakachcheri",
         supervisor: "Rev. V. Moorthy",
-        description: "Ministry continues under the supervision of the Chavakachcheri Church."
+        description: "Ministry continues under the supervision of the Chavakachcheri Church.",
+        gallery: [] // add 3-6 photo paths here later, e.g. "images/mission-points/atchuveli/1.jpg"
     },
     {
         id: "punnala-kattuwan",
         name: "Punnala Kattuwan Mission Station",
         church: "chavakachcheri",
         supervisor: "Rev. V. Moorthy",
-        description: "Ministry continues under the supervision of the Chavakachcheri Church."
+        description: "Ministry continues under the supervision of the Chavakachcheri Church.",
+        gallery: [] // add 3-6 photo paths here later, e.g. "images/mission-points/punnala-kattuwan/1.jpg"
     },
     {
         id: "tangalle",
         name: "Tangalle Mission Station",
         church: "hanwella",
         supervisor: "Rev. Shehan de Silva",
-        description: "Continues as a mission station under the supervision of the Hanwella Church."
+        description: "Continues as a mission station under the supervision of the Hanwella Church.",
+        gallery: [] // add 3-6 photo paths here later, e.g. "images/mission-points/tangalle/1.jpg"
     },
     {
         id: "ampegama",
         name: "Ampegama Mission Station",
         church: "hanwella",
         supervisor: "Rev. Shehan de Silva",
-        description: "Operates under the Hanwella Church; a temporary worker resides there and serves."
+        description: "Operates under the Hanwella Church; a temporary worker resides there and serves.",
+        gallery: [] // add 3-6 photo paths here later, e.g. "images/mission-points/ampegama/1.jpg"
     },
     {
         id: "palawatta",
         name: "Palawatta Mission Station",
         church: "ratnapura",
         supervisor: "Rev. Jayantha Costa",
-        description: "Operates under the Ratnapura Church and its supervision."
+        description: "Operates under the Ratnapura Church and its supervision.",
+        gallery: [] // add 3-6 photo paths here later, e.g. "images/mission-points/palawatta/1.jpg"
     },
     {
         id: "elpitiya",
         name: "Elpitiya Mission Station",
         church: "ratnapura",
         supervisor: "Elpitiya Mission Committee",
-        description: "The ministry operates under the Elpitiya Mission Committee."
+        description: "The ministry operates under the Elpitiya Mission Committee.",
+        gallery: [] // add 3-6 photo paths here later, e.g. "images/mission-points/elpitiya/1.jpg"
     }
 ];
 
@@ -262,9 +289,8 @@ const CHURCHES = [
     },
 
     {
-        id: "biyaganwila",
-        name: "Biyaganwila Baptist Church",
-        altName: "Biyanwila Baptist Church",
+        id: "biyanwila",
+        name: "Biyanwila Baptist Church",
         zone: "siyane",
         district: "gampaha",
         address: "Biyanwila, Gampaha District",
@@ -272,8 +298,8 @@ const CHURCHES = [
         logo: "images/churches/biyanwila.png",
         facebook: null,
         pastor: { name: "Rev. Joseph Andrady", term: "1 January 2025 – 31 December 2029" },
-        history: "Biyagama Baptist Church has its roots in 1832, when missionaries Ebenezer Daniel and Hendrick Siers began evangelistic work in the area. A local shopkeeper who initially resisted their message was won over by their patience and later donated her own premises for a church building in 1836. Under Rev. J. Miguel Perera's three-decade pastorate from 1882, the congregation grew its schools and outreach considerably. The church celebrated 150 years in 1982 alongside the founding of a vocational training institute, and completed a major sanctuary renovation in 2023 that preserved much of its original character.",
-        gallery: [], // add 3-6 photo paths here later, e.g. "images/churches/biyagama/1.jpg"
+        history: "Biyanwila Baptist Church has its roots in 1832, when missionaries Ebenezer Daniel and Hendrick Siers began evangelistic work in the area. A local shopkeeper who initially resisted their message was won over by their patience and later donated her own premises for a church building in 1836. Under Rev. J. Miguel Perera's three-decade pastorate from 1882, the congregation grew its schools and outreach considerably. The church celebrated 150 years in 1982 alongside the founding of a vocational training institute, and completed a major sanctuary renovation in 2023 that preserved much of its original character.",
+        gallery: [], // add 3-6 photo paths here later, e.g. "images/churches/biyanwila/1.jpg"
         stats: { membership: 282, families: 150, ssStudents: 32, ssTeachers: 12, ssClasses: 12, brotherhood: 24, womensSociety: 40, youthSociety: 16, convertedChristians: 0, convertedOtherReligions: 0, sundayWorship: 1, bibleStudies: 1, missionStations: 0, prayerMeetings: 2 }
     },
     {
@@ -578,4 +604,19 @@ const CHURCHES = [
 /* Attach each church's mission points (computed once, used by both pages) */
 CHURCHES.forEach(c => {
     c.missionPoints = MISSION_POINTS.filter(mp => mp.church === c.id);
+});
+
+/* Enrich each mission point with its host church's zone/district —
+   mission points don't have independent location data of their own,
+   they inherit it from the church that oversees them. Also adds an
+   "established" slot (left null for now — no verified founding year
+   was available in the source material, so none was invented; add a
+   real year here, e.g. established: 1998, once you have it and it
+   will appear automatically on that mission point's page). */
+MISSION_POINTS.forEach(mp => {
+    const host = CHURCHES.find(c => c.id === mp.church);
+    mp.hostChurch = host || null;
+    mp.zone       = host ? host.zone     : null;
+    mp.district   = host ? host.district : null;
+    if (mp.established === undefined) mp.established = null;
 });

@@ -8,7 +8,7 @@
     <title id="pageTitle">Church Profile | Sri Lanka Baptist Church</title>
 
     <link rel="stylesheet" href="CSS/global.css">
-    <link rel="stylesheet" href="CSS/churches.css">
+    <link rel="stylesheet" href="CSS/churches.css?v=20260819">
 
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -51,6 +51,7 @@
                     </ul>
                 </li>
                 <li><a href="churches.html" class="active">Churches</a></li>
+                <li><a href="mission-points.html">Mission Points</a></li>
                 <li class="dropdown">
                     <a href="#">Ministries <i class="fas fa-chevron-down"></i></a>
                     <ul class="dropdown-menu">
@@ -81,7 +82,8 @@
 <!-- ===================== BREADCRUMB ===================== -->
 <div style="background:var(--light-bg); padding:14px 0; border-bottom:1px solid var(--border);">
     <div class="container">
-        <nav class="breadcrumb" aria-label="Breadcrumb" style="justify-content:flex-start; opacity:1;">
+        <nav class="breadcrumb" aria-label="Breadcrumb"
+             style="justify-content:flex-start; opacity:1;">
             <a href="index.html"><i class="fas fa-home"></i> Home</a>
             <span style="color:var(--text-light);">/</span>
             <a href="churches.html">Churches</a>
@@ -114,6 +116,7 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="churches.html">Churches</a></li>
+                <li><a href="mission-points.html">Mission Points</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
@@ -155,7 +158,7 @@
 
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script src="script.js"></script>
-<script src="churches-data.js"></script>
+<script src="churches-data.js?v=20260819"></script>
 
 <script>
 (function () {
@@ -164,12 +167,8 @@
     const STAT_LABELS = {
         membership: 'Membership', families: 'Number of Families',
         ssStudents: 'Sunday School Students', ssTeachers: 'Sunday School Teachers',
-        ssClasses: 'Sunday School Classes', brotherhood: 'Brotherhood Members',
-        womensSociety: "Women's Society Members", youthSociety: 'Youth Society Members',
-        convertedChristians: 'Converted Christians', convertedOtherReligions: 'Converted from Other Religions',
         sundayWorship: 'Sunday Worship Services', bibleStudies: 'Bible Studies',
-        missionStations: 'Mission Stations', prayerMeetings: 'Prayer Meetings',
-        otherProjects: 'Other Projects'
+        missionStations: 'Mission Stations'
     };
 
     const params   = new URLSearchParams(window.location.search);
@@ -193,6 +192,7 @@
 
     const zone = ZONES[church.zone];
     const districtLabel = DISTRICTS[church.district] || '';
+    const serviceTimes = church.serviceTimes || {};
 
     /* ---- Hero ---- */
     document.title = church.name + ' | Sri Lanka Baptist Church';
@@ -260,6 +260,34 @@
                     </div>`).join('')}
             </div>` : ''}
 
+            <h3 class="profile-section-title">Service Times</h3>
+            <div class="mp-info-grid mp-info-grid-3">
+                <div class="mp-info-card">
+                    <i class="fas fa-church"></i>
+                    <div>
+                        <div class="mp-info-card-label">Sunday Worship</div>
+                        <div class="mp-info-card-value${serviceTimes.sundayWorship ? '' : ' mp-pending'}">${serviceTimes.sundayWorship || 'Not yet added'}</div>
+                    </div>
+                </div>
+                <div class="mp-info-card">
+                    <i class="fas fa-book-bible"></i>
+                    <div>
+                        <div class="mp-info-card-label">Bible Study</div>
+                        <div class="mp-info-card-value${serviceTimes.bibleStudy ? '' : ' mp-pending'}">${serviceTimes.bibleStudy || 'Not yet added'}</div>
+                    </div>
+                </div>
+                <div class="mp-info-card">
+                    <i class="fas fa-child"></i>
+                    <div>
+                        <div class="mp-info-card-label">Sunday School</div>
+                        <div class="mp-info-card-value${serviceTimes.sundaySchool ? '' : ' mp-pending'}">${serviceTimes.sundaySchool || 'Not yet added'}</div>
+                    </div>
+                </div>
+            </div>
+            ${church.additionalInfo ? `
+            <h3 class="profile-section-title">Additional Information</h3>
+            <div class="profile-history"><p>${church.additionalInfo}</p></div>` : ''}
+
             ${church.missionPoints.length ? `
             <h3 class="profile-section-title">Mission Points Overseen by This Church</h3>
             <div class="mission-point-list">
@@ -268,6 +296,9 @@
                         <h4><i class="fas fa-map-signs"></i> ${mp.name}</h4>
                         <p class="mission-point-supervisor">Supervised by ${mp.supervisor}</p>
                         <p>${mp.description}</p>
+                        <a href="mission-point-profile.html?id=${mp.id}" class="church-more-info" style="margin-top:14px;">
+                            More Info <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>`).join('')}
             </div>` : ''}
         </div>
