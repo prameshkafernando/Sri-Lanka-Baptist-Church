@@ -152,31 +152,36 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    /* ── Helper: find a nav link whose normalised href matches ─────── */
+    /* Netlify's Pretty URLs post-processing rewrites hrefs like       */
+    /* "about.html" to "/about", so we can't match on the raw href     */
+    /* string — normHref() already collapses both forms identically.  */
+    function findTrigger(name) {
+        let found = null;
+        document.querySelectorAll('.nav-links a').forEach(a => {
+            if (!found && normHref(a.getAttribute('href')) === name) found = a;
+        });
+        return found;
+    }
+
     /* ── About Us group ───────────────────────────────────────────── */
     const aboutGroup = ['about', 'history', 'careycollege'];
     if (aboutGroup.includes(currentPage)) {
-        // Find the trigger by href, not by position
-        const aboutTrigger = document.querySelector(
-            '.nav-links a[href="about.html"], .nav-links a[href="about"]'
-        );
+        const aboutTrigger = findTrigger('about');
         if (aboutTrigger) aboutTrigger.classList.add('active');
     }
 
     /* ── Churches group ───────────────────────────────────────────── */
     const churchesGroup = ['churches', 'church-profile'];
     if (churchesGroup.includes(currentPage)) {
-        const churchesTrigger = document.querySelector(
-            '.nav-links a[href="churches.html"], .nav-links a[href="churches"]'
-        );
+        const churchesTrigger = findTrigger('churches');
         if (churchesTrigger) churchesTrigger.classList.add('active');
     }
 
     /* ── Mission Points group ─────────────────────────────────────── */
     const missionPointsGroup = ['mission-points', 'mission-point-profile'];
     if (missionPointsGroup.includes(currentPage)) {
-        const missionPointsTrigger = document.querySelector(
-            '.nav-links a[href="mission-points.html"], .nav-links a[href="mission-points"]'
-        );
+        const missionPointsTrigger = findTrigger('mission-points');
         if (missionPointsTrigger) missionPointsTrigger.classList.add('active');
     }
 
