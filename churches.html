@@ -4,12 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sri Lanka Baptist Church – Full directory of Baptist churches across Sri Lanka with contact details and locations.">
+    <meta name="description" content="Sri Lanka Baptist Church – Full directory of Baptist churches across Sri Lanka, grouped by zone, with contact details, districts, locations and mission points.">
     <title>Church Directory | Sri Lanka Baptist Church</title>
 
-    <!-- global first, then page-specific -->
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/churches.css">
+    <link rel="stylesheet" href="CSS/global.css">
+    <link rel="stylesheet" href="CSS/churches.css">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -80,7 +79,7 @@
     <div class="page-hero-content" data-aos="fade-up">
         <span class="section-eyebrow">Across Sri Lanka</span>
         <h1>Church Directory</h1>
-        <p>Find a Baptist church near you — from Colombo to Kilinochchi, our family of churches spans the entire island.</p>
+        <p>Find a Baptist church near you — from Colombo to Chavakachcheri, our family of churches spans the entire island, organised into four zones.</p>
     </div>
 </section>
 
@@ -107,15 +106,17 @@
                 <div class="divider-left"></div>
                 <p>
                     The Sri Lanka Baptist Church is home to a family of Baptist churches
-                    spread across every corner of the island. From the bustling city of Colombo
-                    to the lush highlands of Kandy, from the northern plains of Kilinochchi to
-                    the southern coast of Moratuwa — our churches share one faith, one fellowship,
-                    and one mission.
+                    spread across every corner of the island, organised into four zones —
+                    Colombo, Siyane, Kandurata and Kelaniweli. From the bustling city of
+                    Colombo to the northern plains of Chavakachcheri, from the hills of Kandy
+                    to the southern coast of Moratuwa — our churches share one faith, one
+                    fellowship, and one mission.
                 </p>
                 <p>
                     Each local church is an independent congregation united under the banner
-                    of the Church, worshipping together, serving their communities, and
-                    proclaiming the Good News of Jesus Christ to every person in Sri Lanka.
+                    of the Sangamaya, worshipping together, serving their communities, and
+                    proclaiming the Good News of Jesus Christ to every person in Sri Lanka —
+                    together with the mission points and mission stations many of them oversee.
                 </p>
                 <p>
                     Whether you are looking for a place to worship, seeking fellowship, or
@@ -123,18 +124,13 @@
                     your starting point.
                 </p>
                 <a href="#directory" class="btn btn-primary" style="margin-top:8px;">
-                    <i class="fas fa-church"></i> Browse All Churches
+                    <i class="fas fa-church"></i>&nbsp; Browse All Churches
                 </a>
             </div>
 
             <!-- Image -->
             <div class="churches-intro-img" data-aos="fade-left">
-                <!--
-                    Replace src with a wide photo of any Baptist church building.
-                    Recommended size: 900×600 px or wider.
-                    Suggested file: images/churches-intro.jpg
-                -->
-                <img src="images/churches/srilankabaptistchurches.png" alt="Baptist Church Sri Lanka">
+                <img src="images/churches/srilankabaptistchurches.png" style="width: 100%; height: auto;" alt="Baptist Church Sri Lanka">
                 <div class="intro-badge">
                     <strong>30+</strong>
                     Churches Island-wide
@@ -154,16 +150,16 @@
                 <div class="stat-label">Years of History</div>
             </div>
             <div class="stat-item">
+                <div class="stat-number">4</div>
+                <div class="stat-label">Zones Island-wide</div>
+            </div>
+            <div class="stat-item">
                 <div class="stat-number">30+</div>
-                <div class="stat-label">Churches and Mission Points</div>
+                <div class="stat-label">Churches &amp; Mission Points</div>
             </div>
             <div class="stat-item">
                 <div class="stat-number">36</div>
                 <div class="stat-label">Ministers</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">8</div>
-                <div class="stat-label">Evangelists</div>
             </div>
         </div>
     </div>
@@ -183,52 +179,28 @@
                     aria-label="Search churches">
             </div>
 
+            <select id="zoneFilter" aria-label="Filter by zone">
+                <option value="">All Zones</option>
+                <!-- populated from ZONES in churches-data.js -->
+            </select>
+
             <select id="districtFilter" aria-label="Filter by district">
                 <option value="">All Districts</option>
-                <option value="colombo">Colombo</option>
-                <option value="gampaha">Gampaha</option>
-                <option value="kalutara">Kalutara</option>
-                <option value="kandy">Kandy</option>
-                <option value="matale">Matale</option>
-                <option value="ratnapura">Ratnapura</option>
-                <option value="kegalle">Kegalle</option>
-                <option value="puttalam">Puttalam</option>
-                <option value="anuradhapura">Anuradhapura</option>
-                <option value="ampara">Ampara</option>
-                <option value="kilinochchi">Kilinochchi</option>
-                <option value="jaffna">Jaffna</option>
+                <!-- populated from DISTRICTS in churches-data.js -->
             </select>
 
             <span class="search-count" id="searchCount">
-                Showing <span id="visibleCount">29</span> of 29 churches
+                Showing <span id="visibleCount">0</span> of <span id="totalCount">0</span> churches
             </span>
 
         </div>
     </div>
 </div>
 
-<!-- ===================== CHURCH GRID ===================== -->
-<!--
-╔══════════════════════════════════════════════════════════════╗
-║  HOW TO EDIT CHURCH CARDS                                    ║
-╠══════════════════════════════════════════════════════════════╣
-║  LOGO   → Replace src in <img class="church-logo-img">       ║
-║           If NO logo: simply remove the <img> tag —          ║
-║           the blue church icon will appear automatically.    ║
-║                                                              ║
-║  EMAIL  → Uncomment the block marked [EMAIL BLOCK]           ║
-║           and replace the placeholder address.               ║
-║                                                              ║
-║  FB     → Uncomment the <div class="church-footer"> block    ║
-║           marked [FB BLOCK] and paste the Facebook URL.      ║
-║                                                              ║
-║  SEARCH → data-name  = full church name (lowercase)          ║
-║           data-district = district name (lowercase)          ║
-╚══════════════════════════════════════════════════════════════╝
--->
-
+<!-- ===================== CHURCH GRID (rendered by JS from churches-data.js) ===================== -->
 <div class="container">
 <div class="church-grid" id="churchGrid">
+    <!-- Cards are generated automatically — see churches-data.js to add/edit churches -->
 
     <!-- NO-RESULTS (hidden by default; shown by JS when search yields nothing) -->
     <div class="no-results" id="noResults" style="display:none;">
@@ -238,1190 +210,7 @@
             Clear Search
         </button>
     </div>
-
-    <!-- ═══════════════════════════════════════════
-         1. HEADQUARTERS
-         ═══════════════════════════════════════════ -->
-    <div class="church-card hq"
-         data-name="sri lanka baptist church headquarters colombo"
-         data-district="colombo">
-        <div class="church-logo-wrap">
-            <img src="images/logo.jpg"
-                 alt="Headquarters Logo"
-                 class="church-logo-img"
-                 onerror="this.style.display='none'">
-            <div class="church-logo-fallback"><i class="fas fa-landmark"></i></div>
-            <span class="church-district">Colombo</span>
-        </div>
-        <div class="church-body">
-            <h3 class="church-name">Sri Lanka Baptist Church – Headquarters</h3>
-            <div class="church-detail">
-                <i class="fas fa-map-marker-alt"></i>
-                <span><!-- Add full address --> Colombo, Sri Lanka</span>
-            </div>
-            <div class="church-detail">
-                <i class="fas fa-phone"></i>
-                <a href="tel:+94112695459">+94 11 269 5459</a>
-            </div>
-            <div class="church-detail">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:info@srilankabaptistchurch.lk">info@srilankabaptistchurch.lk</a>
-            </div>
-        </div>
-        <div class="church-footer">
-            <a href="https://www.facebook.com/p/Sri-Lanka-Baptist-Church-61569196400970/"
-               class="church-fb" target="_blank" rel="noopener">
-                <i class="fab fa-facebook-f"></i> View on Facebook
-            </a>
-        </div>
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         2. AGALAWATTA
-         ═══════════════════════════════════════════ -->
-    <div class="church-card"
-         data-name="agalawatta baptist church kalutara"
-         data-district="kalutara">
-        <div class="church-logo-wrap">
-            <!-- LOGO: replace src below with agalawatta church logo -->
-            <img src="images/churches/agalawatta.png"
-                 alt="Agalawatta Baptist Church Logo"
-                 class="church-logo-img"
-                 onerror="this.style.display='none'">
-            <div class="church-logo-fallback"><i class="fas fa-church"></i></div>
-            <span class="church-district">Kalutara</span>
-        </div>
-        <div class="church-body">
-            <h3 class="church-name">Agalawatta Baptist Church</h3>
-            <div class="church-detail">
-                <i class="fas fa-map-marker-alt"></i>
-                <span><!-- Add full address --> Agalawatta, Kalutara District</span>
-            </div>
-            <div class="church-detail">
-                <i class="fas fa-phone"></i>
-                <a href="tel:+94342249279">+94 34 224 9279</a>
-            </div>
-            <!-- [EMAIL BLOCK] Uncomment & fill in if available
-            <div class="church-detail">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:church@email.com">church@email.com</a>
-            </div>
-            -->
-        </div>
-        <div class="church-footer">
-            <a href="https://www.facebook.com/agalawatta.baptistchurch.7"
-               class="church-fb" target="_blank" rel="noopener">
-                <i class="fab fa-facebook-f"></i> View on Facebook
-            </a>
-        </div>
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         3. AMBAGASTENNA
-         ═══════════════════════════════════════════ -->
-    <div class="church-card"
-         data-name="ambagastenna baptist church kandy"
-         data-district="kandy">
-        <div class="church-logo-wrap">
-            <img src="images/churches/ambagastenna.png"
-                 alt="Ambagastenna Baptist Church Logo"
-                 class="church-logo-img"
-                 onerror="this.style.display='none'">
-            <div class="church-logo-fallback"><i class="fas fa-church"></i></div>
-            <span class="church-district">Kandy</span>
-        </div>
-        <div class="church-body">
-            <h3 class="church-name">Ambagastenna Baptist Church</h3>
-            <div class="church-detail">
-                <i class="fas fa-map-marker-alt"></i>
-                <span><!-- Add full address --> Ambagastenna, Kandy District</span>
-            </div>
-            <div class="church-detail">
-                <i class="fas fa-phone"></i>
-                <a href="tel:+94662255107">+94 66 225 5107</a>
-            </div>
-            <!-- [EMAIL BLOCK] Uncomment & fill in if available
-            <div class="church-detail">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:church@email.com">church@email.com</a>
-            </div>
-            -->
-        </div>
-        <!-- [FB BLOCK] Uncomment & fill in Facebook URL if available
-        <div class="church-footer">
-            <a href="https://facebook.com/PAGE-NAME-HERE"
-               class="church-fb" target="_blank" rel="noopener">
-                <i class="fab fa-facebook-f"></i> View on Facebook
-            </a>
-        </div>
-        -->
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         4. BELIGODAPITIYA
-         ═══════════════════════════════════════════ -->
-    <div class="church-card"
-         data-name="beligodapitiya baptist church kegalle"
-         data-district="kegalle">
-        <div class="church-logo-wrap">
-            <img src="images/churches/beligodapitiya.png"
-                 alt="Beligodapitiya Baptist Church Logo"
-                 class="church-logo-img"
-                 onerror="this.style.display='none'">
-            <div class="church-logo-fallback"><i class="fas fa-church"></i></div>
-            <span class="church-district">Kegalle</span>
-        </div>
-        <div class="church-body">
-            <h3 class="church-name">Beligodapitiya Baptist Church</h3>
-            <div class="church-detail">
-                <i class="fas fa-map-marker-alt"></i>
-                <span><!-- Add full address --> Beligodapitiya, Kegalle District</span>
-            </div>
-            <div class="church-detail">
-                <i class="fas fa-phone"></i>
-                <a href="tel:+94352265690">+94 35 226 5690</a>
-            </div>
-            <!-- [EMAIL BLOCK] Uncomment & fill in if available
-            <div class="church-detail">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:church@email.com">church@email.com</a>
-            </div>
-            -->
-        </div>
-        <!-- [FB BLOCK] Uncomment if Facebook available
-        <div class="church-footer">
-            <a href="https://facebook.com/PAGE-NAME-HERE"
-               class="church-fb" target="_blank" rel="noopener">
-                <i class="fab fa-facebook-f"></i> View on Facebook
-            </a>
-        </div>
-        -->
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         5. BIYANWILA
-         ═══════════════════════════════════════════ -->
-    <div class="church-card"
-         data-name="biyanwila baptist church gampaha"
-         data-district="gampaha">
-        <div class="church-logo-wrap">
-            <img src="images/churches/biyanwila.png"
-                 alt="Biyanwila Baptist Church Logo"
-                 class="church-logo-img"
-                 onerror="this.style.display='none'">
-            <div class="church-logo-fallback"><i class="fas fa-church"></i></div>
-            <span class="church-district">Gampaha</span>
-        </div>
-        <div class="church-body">
-            <h3 class="church-name">Biyanwila Baptist Church</h3>
-            <div class="church-detail">
-                <i class="fas fa-map-marker-alt"></i>
-                <span><!-- Add full address --> Biyanwila, Gampaha District</span>
-            </div>
-            <div class="church-detail">
-                <i class="fas fa-phone"></i>
-                <a href="tel:+94112929902">+94 11 292 9902</a>
-            </div>
-            <!-- [EMAIL BLOCK] Uncomment & fill in if available
-            <div class="church-detail">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:church@email.com">church@email.com</a>
-            </div>
-            -->
-        </div>
-        <!-- [FB BLOCK] Uncomment if Facebook available
-        <div class="church-footer">
-            <a href="https://facebook.com/PAGE-NAME-HERE"
-               class="church-fb" target="_blank" rel="noopener">
-                <i class="fab fa-facebook-f"></i> View on Facebook
-            </a>
-        </div>
-        -->
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         6. CHAVAKACHCHERI
-         ═══════════════════════════════════════════ -->
-    <div class="church-card"
-         data-name="chavakachcheri baptist church jaffna"
-         data-district="jaffna">
-        <div class="church-logo-wrap">
-            <img src="images/churches/chavakachcheri.png"
-                 alt="Chavakachcheri Baptist Church Logo"
-                 class="church-logo-img"
-                 onerror="this.style.display='none'">
-            <div class="church-logo-fallback"><i class="fas fa-church"></i></div>
-            <span class="church-district">Jaffna</span>
-        </div>
-        <div class="church-body">
-            <h3 class="church-name">Chavakachcheri Baptist Church</h3>
-            <div class="church-detail">
-                <i class="fas fa-map-marker-alt"></i>
-                <span><!-- Add full address --> Chavakachcheri, Jaffna District</span>
-            </div>
-            <div class="church-detail">
-                <i class="fas fa-phone"></i>
-                <a href="tel:+94776891897">+94 77 689 1897</a>
-            </div>
-            <!-- [EMAIL BLOCK] Uncomment & fill in if available
-            <div class="church-detail">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:church@email.com">church@email.com</a>
-            </div>
-            -->
-        </div>
-        <!-- [FB BLOCK] Uncomment if Facebook available
-        <div class="church-footer">
-            <a href="https://facebook.com/PAGE-NAME-HERE"
-               class="church-fb" target="_blank" rel="noopener">
-                <i class="fab fa-facebook-f"></i> View on Facebook
-            </a>
-        </div>
-        -->
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         7. CINNAMON GARDENS
-         ═══════════════════════════════════════════ -->
-    <div class="church-card"
-         data-name="cinnamon gardens baptist church colombo 7"
-         data-district="colombo">
-        <div class="church-logo-wrap">
-            <img src="images/churches/CGBC.jpg"
-                 alt="Cinnamon Gardens Baptist Church Logo"
-                 class="church-logo-img"
-                 onerror="this.style.display='none'">
-            <div class="church-logo-fallback"><i class="fas fa-church"></i></div>
-            <span class="church-district">Colombo</span>
-        </div>
-        <div class="church-body">
-            <h3 class="church-name">Cinnamon Gardens Baptist Church</h3>
-            <div class="church-detail">
-                <i class="fas fa-map-marker-alt"></i>
-                <span><!-- Add full address --> Colombo 07, Colombo District</span>
-            </div>
-            <div class="church-detail">
-                <i class="fas fa-phone"></i>
-                <a href="tel:+94112695153">+94 11 269 5153</a>
-            </div>
-            <!-- [EMAIL BLOCK] Uncomment & fill in if available
-            <div class="church-detail">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:church@email.com">church@email.com</a>
-            </div>
-            -->
-        </div>
-        <div class="church-footer">
-            <a href="https://www.facebook.com/cinnamongardensbaptistchurch"
-               class="church-fb" target="_blank" rel="noopener">
-                <i class="fab fa-facebook-f"></i> View on Facebook
-            </a>
-        </div>
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         8. COLPETTY
-         ═══════════════════════════════════════════ -->
-    <div class="church-card"
-         data-name="colpetty baptist church colombo 3"
-         data-district="colombo">
-        <div class="church-logo-wrap">
-            <img src="images/churches/colpetty.png"
-                 alt="Colpetty Baptist Church Logo"
-                 class="church-logo-img"
-                 onerror="this.style.display='none'">
-            <div class="church-logo-fallback"><i class="fas fa-church"></i></div>
-            <span class="church-district">Colombo</span>
-        </div>
-        <div class="church-body">
-            <h3 class="church-name">Colpetty Baptist Church</h3>
-            <div class="church-detail">
-                <i class="fas fa-map-marker-alt"></i>
-                <span><!-- Add full address --> Colombo 03, Colombo District</span>
-            </div>
-            <div class="church-detail">
-                <i class="fas fa-phone"></i>
-                <a href="tel:+94112595228">+94 11 259 5228</a>
-            </div>
-            <!-- [EMAIL BLOCK] Uncomment & fill in if available
-            <div class="church-detail">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:church@email.com">church@email.com</a>
-            </div>
-            -->
-        </div>
-        <!-- [FB BLOCK] Uncomment if Facebook available
-        <div class="church-footer">
-            <a href="https://facebook.com/PAGE-NAME-HERE"
-               class="church-fb" target="_blank" rel="noopener">
-                <i class="fab fa-facebook-f"></i> View on Facebook
-            </a>
-        </div>
-        -->
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         9. DEHIATTAKANDIYA
-         ═══════════════════════════════════════════ -->
-    <div class="church-card"
-         data-name="dehiattakandiya baptist church ampara"
-         data-district="ampara">
-        <div class="church-logo-wrap">
-            <img src="images/churches/dehiattakandiya.png"
-                 alt="Dehiattakandiya Baptist Church Logo"
-                 class="church-logo-img"
-                 onerror="this.style.display='none'">
-            <div class="church-logo-fallback"><i class="fas fa-church"></i></div>
-            <span class="church-district">Ampara</span>
-        </div>
-        <div class="church-body">
-            <h3 class="church-name">Dehiattakandiya Baptist Church</h3>
-            <div class="church-detail">
-                <i class="fas fa-map-marker-alt"></i>
-                <span><!-- Add full address --> Dehiattakandiya, Ampara District</span>
-            </div>
-            <!-- [PHONE BLOCK] Uncomment & fill in if available
-            <div class="church-detail">
-                <i class="fas fa-phone"></i>
-                <a href="tel:+94XXXXXXXXX">+94 XX XXX XXXX</a>
-            </div>
-            -->
-            <!-- [EMAIL BLOCK] Uncomment & fill in if available
-            <div class="church-detail">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:church@email.com">church@email.com</a>
-            </div>
-            -->
-        </div>
-        <!-- [FB BLOCK] Uncomment if Facebook available
-        <div class="church-footer">
-            <a href="https://facebook.com/PAGE-NAME-HERE"
-               class="church-fb" target="_blank" rel="noopener">
-                <i class="fab fa-facebook-f"></i> View on Facebook
-            </a>
-        </div>
-        -->
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         10. EHELIYAGODA
-         ═══════════════════════════════════════════ -->
-    <div class="church-card"
-         data-name="eheliyagoda baptist church ratnapura"
-         data-district="ratnapura">
-        <div class="church-logo-wrap">
-            <img src="images/churches/eheliyagoda.png"
-                 alt="Eheliyagoda Baptist Church Logo"
-                 class="church-logo-img"
-                 onerror="this.style.display='none'">
-            <div class="church-logo-fallback"><i class="fas fa-church"></i></div>
-            <span class="church-district">Ratnapura</span>
-        </div>
-        <div class="church-body">
-            <h3 class="church-name">Eheliyagoda Baptist Church</h3>
-            <div class="church-detail">
-                <i class="fas fa-map-marker-alt"></i>
-                <span><!-- Add full address --> Eheliyagoda, Ratnapura District</span>
-            </div>
-            <div class="church-detail">
-                <i class="fas fa-phone"></i>
-                <a href="tel:+94362258427">+94 36 225 8427</a>
-            </div>
-            <!-- [EMAIL BLOCK] Uncomment & fill in if available
-            <div class="church-detail">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:church@email.com">church@email.com</a>
-            </div>
-            -->
-        </div>
-        <!-- [FB BLOCK] Uncomment if Facebook available
-        <div class="church-footer">
-            <a href="https://facebook.com/PAGE-NAME-HERE"
-               class="church-fb" target="_blank" rel="noopener">
-                <i class="fab fa-facebook-f"></i> View on Facebook
-            </a>
-        </div>
-        -->
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         11. GONAWALA
-         ═══════════════════════════════════════════ -->
-    <div class="church-card"
-         data-name="gonawala baptist church gampaha"
-         data-district="gampaha">
-        <div class="church-logo-wrap">
-            <img src="images/churches/gonawala.png"
-                 alt="Gonawala Baptist Church Logo"
-                 class="church-logo-img"
-                 onerror="this.style.display='none'">
-            <div class="church-logo-fallback"><i class="fas fa-church"></i></div>
-            <span class="church-district">Gampaha</span>
-        </div>
-        <div class="church-body">
-            <h3 class="church-name">Gonawala Baptist Church</h3>
-            <div class="church-detail">
-                <i class="fas fa-map-marker-alt"></i>
-                <span><!-- Add full address --> Gonawala, Gampaha District</span>
-            </div>
-            <div class="church-detail">
-                <i class="fas fa-phone"></i>
-                <a href="tel:+94112915358">+94 11 291 5358</a>
-            </div>
-            <!-- [EMAIL BLOCK] Uncomment & fill in if available
-            <div class="church-detail">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:church@email.com">church@email.com</a>
-            </div>
-            -->
-        </div>
-        <div class="church-footer">
-            <a href="https://www.facebook.com/GBCLK"
-               class="church-fb" target="_blank" rel="noopener">
-                <i class="fab fa-facebook-f"></i> View on Facebook
-            </a>
-        </div>
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         12. GRANDPASS
-         ═══════════════════════════════════════════ -->
-    <div class="church-card"
-         data-name="grandpass baptist church colombo 14"
-         data-district="colombo">
-        <div class="church-logo-wrap">
-            <img src="images/churches/grandpass.png"
-                 alt="Grandpass Baptist Church Logo"
-                 class="church-logo-img"
-                 onerror="this.style.display='none'">
-            <div class="church-logo-fallback"><i class="fas fa-church"></i></div>
-            <span class="church-district">Colombo</span>
-        </div>
-        <div class="church-body">
-            <h3 class="church-name">Grandpass Baptist Church</h3>
-            <div class="church-detail">
-                <i class="fas fa-map-marker-alt"></i>
-                <span><!-- Add full address --> Grandpass, Colombo 14</span>
-            </div>
-            <div class="church-detail">
-                <i class="fas fa-phone"></i>
-                <a href="tel:+94112338613">+94 11 233 8613</a>
-            </div>
-            <!-- [EMAIL BLOCK] Uncomment & fill in if available
-            <div class="church-detail">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:church@email.com">church@email.com</a>
-            </div>
-            -->
-        </div>
-        <!-- [FB BLOCK] Uncomment if Facebook available
-        <div class="church-footer">
-            <a href="https://facebook.com/PAGE-NAME-HERE"
-               class="church-fb" target="_blank" rel="noopener">
-                <i class="fab fa-facebook-f"></i> View on Facebook
-            </a>
-        </div>
-        -->
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         13. HABARANA
-         ═══════════════════════════════════════════ -->
-    <div class="church-card"
-         data-name="habarana baptist church anuradhapura"
-         data-district="anuradhapura">
-        <div class="church-logo-wrap">
-            <img src="images/churches/habarana.png"
-                 alt="Habarana Baptist Church Logo"
-                 class="church-logo-img"
-                 onerror="this.style.display='none'">
-            <div class="church-logo-fallback"><i class="fas fa-church"></i></div>
-            <span class="church-district">Anuradhapura</span>
-        </div>
-        <div class="church-body">
-            <h3 class="church-name">Habarana Baptist Church</h3>
-            <div class="church-detail">
-                <i class="fas fa-map-marker-alt"></i>
-                <span><!-- Add full address --> Habarana, Anuradhapura District</span>
-            </div>
-            <!-- [PHONE BLOCK] Uncomment & fill in if available
-            <div class="church-detail">
-                <i class="fas fa-phone"></i>
-                <a href="tel:+94XXXXXXXXX">+94 XX XXX XXXX</a>
-            </div>
-            -->
-            <!-- [EMAIL BLOCK] Uncomment & fill in if available
-            <div class="church-detail">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:church@email.com">church@email.com</a>
-            </div>
-            -->
-        </div>
-        <!-- [FB BLOCK] Uncomment if Facebook available
-        <div class="church-footer">
-            <a href="https://facebook.com/PAGE-NAME-HERE"
-               class="church-fb" target="_blank" rel="noopener">
-                <i class="fab fa-facebook-f"></i> View on Facebook
-            </a>
-        </div>
-        -->
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         14. HANWELLA
-         ═══════════════════════════════════════════ -->
-    <div class="church-card"
-         data-name="hanwella baptist church colombo"
-         data-district="colombo">
-        <div class="church-logo-wrap">
-            <img src="images/churches/hanwella.png"
-                 alt="Hanwella Baptist Church Logo"
-                 class="church-logo-img"
-                 onerror="this.style.display='none'">
-            <div class="church-logo-fallback"><i class="fas fa-church"></i></div>
-            <span class="church-district">Colombo</span>
-        </div>
-        <div class="church-body">
-            <h3 class="church-name">Hanwella Baptist Church</h3>
-            <div class="church-detail">
-                <i class="fas fa-map-marker-alt"></i>
-                <span><!-- Add full address --> Hanwella, Colombo District</span>
-            </div>
-            <div class="church-detail">
-                <i class="fas fa-phone"></i>
-                <a href="tel:+94362253441">+94 36 225 3441</a>
-            </div>
-            <!-- [EMAIL BLOCK] Uncomment & fill in if available
-            <div class="church-detail">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:church@email.com">church@email.com</a>
-            </div>
-            -->
-        </div>
-        <!-- [FB BLOCK] Uncomment if Facebook available
-        <div class="church-footer">
-            <a href="https://facebook.com/PAGE-NAME-HERE"
-               class="church-fb" target="_blank" rel="noopener">
-                <i class="fab fa-facebook-f"></i> View on Facebook
-            </a>
-        </div>
-        -->
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         15. HENDALA
-         ═══════════════════════════════════════════ -->
-    <div class="church-card"
-         data-name="hendala baptist church gampaha"
-         data-district="gampaha">
-        <div class="church-logo-wrap">
-            <img src="images/churches/hendala.jpg"
-                 alt="Hendala Baptist Church Logo"
-                 class="church-logo-img"
-                 onerror="this.style.display='none'">
-            <div class="church-logo-fallback"><i class="fas fa-church"></i></div>
-            <span class="church-district">Gampaha</span>
-        </div>
-        <div class="church-body">
-            <h3 class="church-name">Hendala Baptist Church</h3>
-            <div class="church-detail">
-                <i class="fas fa-map-marker-alt"></i>
-                <span><!-- Add full address --> Hendala, Gampaha District</span>
-            </div>
-            <div class="church-detail">
-                <i class="fas fa-phone"></i>
-                <a href="tel:+94112932643">+94 11 293 2643</a>
-            </div>
-            <!-- [EMAIL BLOCK] Uncomment & fill in if available
-            <div class="church-detail">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:church@email.com">church@email.com</a>
-            </div>
-            -->
-        </div>
-        <div class="church-footer">
-            <a href="https://www.facebook.com/Hendala.Baptist.Church/"
-               class="church-fb" target="_blank" rel="noopener">
-                <i class="fab fa-facebook-f"></i> View on Facebook
-            </a>
-        </div>
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         16. KAL-ELIYA
-         ═══════════════════════════════════════════ -->
-    <div class="church-card"
-         data-name="kal-eliya baptist church kalutara"
-         data-district="kalutara">
-        <div class="church-logo-wrap">
-            <img src="images/churches/kal-eliya.png"
-                 alt="Kal-Eliya Baptist Church Logo"
-                 class="church-logo-img"
-                 onerror="this.style.display='none'">
-            <div class="church-logo-fallback"><i class="fas fa-church"></i></div>
-            <span class="church-district">Kalutara</span>
-        </div>
-        <div class="church-body">
-            <h3 class="church-name">Kal-Eliya Baptist Church</h3>
-            <div class="church-detail">
-                <i class="fas fa-map-marker-alt"></i>
-                <span><!-- Add full address --> Kal-Eliya, Kalutara District</span>
-            </div>
-            <!-- [PHONE BLOCK] Uncomment & fill in if available
-            <div class="church-detail">
-                <i class="fas fa-phone"></i>
-                <a href="tel:+94XXXXXXXXX">+94 XX XXX XXXX</a>
-            </div>
-            -->
-            <!-- [EMAIL BLOCK] Uncomment & fill in if available
-            <div class="church-detail">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:church@email.com">church@email.com</a>
-            </div>
-            -->
-        </div>
-        <!-- [FB BLOCK] Uncomment if Facebook available
-        <div class="church-footer">
-            <a href="https://facebook.com/PAGE-NAME-HERE"
-               class="church-fb" target="_blank" rel="noopener">
-                <i class="fab fa-facebook-f"></i> View on Facebook
-            </a>
-        </div>
-        -->
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         17. KANDANA
-         ═══════════════════════════════════════════ -->
-    <div class="church-card"
-         data-name="kandana baptist church gampaha"
-         data-district="gampaha">
-        <div class="church-logo-wrap">
-            <img src="images/churches/kandana.png"
-                 alt="Kandana Baptist Church Logo"
-                 class="church-logo-img"
-                 onerror="this.style.display='none'">
-            <div class="church-logo-fallback"><i class="fas fa-church"></i></div>
-            <span class="church-district">Gampaha</span>
-        </div>
-        <div class="church-body">
-            <h3 class="church-name">Kandana Baptist Church</h3>
-            <div class="church-detail">
-                <i class="fas fa-map-marker-alt"></i>
-                <span><!-- Add full address --> Kandana, Gampaha District</span>
-            </div>
-            <div class="church-detail">
-                <i class="fas fa-phone"></i>
-                <a href="tel:+94112244065">+94 11 224 4065</a>
-            </div>
-            <!-- [EMAIL BLOCK] Uncomment & fill in if available
-            <div class="church-detail">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:church@email.com">church@email.com</a>
-            </div>
-            -->
-        </div>
-        <!-- [FB BLOCK] Uncomment if Facebook available
-        <div class="church-footer">
-            <a href="https://facebook.com/PAGE-NAME-HERE"
-               class="church-fb" target="_blank" rel="noopener">
-                <i class="fab fa-facebook-f"></i> View on Facebook
-            </a>
-        </div>
-        -->
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         18. KANDY
-         ═══════════════════════════════════════════ -->
-    <div class="church-card"
-         data-name="kandy baptist church kandy district"
-         data-district="kandy">
-        <div class="church-logo-wrap">
-            <img src="images/churches/kandy.png"
-                 alt="Kandy Baptist Church Logo"
-                 class="church-logo-img"
-                 onerror="this.style.display='none'">
-            <div class="church-logo-fallback"><i class="fas fa-church"></i></div>
-            <span class="church-district">Kandy</span>
-        </div>
-        <div class="church-body">
-            <h3 class="church-name">Kandy Baptist Church</h3>
-            <div class="church-detail">
-                <i class="fas fa-map-marker-alt"></i>
-                <span><!-- Add full address --> Kandy, Kandy District</span>
-            </div>
-            <div class="church-detail">
-                <i class="fas fa-phone"></i>
-                <a href="tel:+94812222009">+94 81 222 2009</a>
-            </div>
-            <!-- [EMAIL BLOCK] Uncomment & fill in if available
-            <div class="church-detail">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:church@email.com">church@email.com</a>
-            </div>
-            -->
-        </div>
-        <div class="church-footer">
-            <a href="https://www.facebook.com/profile.php?id=100084000093284"
-               class="church-fb" target="_blank" rel="noopener">
-                <i class="fab fa-facebook-f"></i> View on Facebook
-            </a>
-        </div>
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         19. KEKIRAWA
-         ═══════════════════════════════════════════ -->
-    <div class="church-card"
-         data-name="kekirawa baptist church anuradhapura"
-         data-district="anuradhapura">
-        <div class="church-logo-wrap">
-            <img src="images/churches/kekirawa.png"
-                 alt="Kekirawa Baptist Church Logo"
-                 class="church-logo-img"
-                 onerror="this.style.display='none'">
-            <div class="church-logo-fallback"><i class="fas fa-church"></i></div>
-            <span class="church-district">Anuradhapura</span>
-        </div>
-        <div class="church-body">
-            <h3 class="church-name">Kekirawa Baptist Church</h3>
-            <div class="church-detail">
-                <i class="fas fa-map-marker-alt"></i>
-                <span><!-- Add full address --> Kekirawa, Anuradhapura District</span>
-            </div>
-            <div class="church-detail">
-                <i class="fas fa-phone"></i>
-                <a href="tel:+94252264681">+94 25 226 4681</a>
-            </div>
-            <!-- [EMAIL BLOCK] Uncomment & fill in if available
-            <div class="church-detail">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:church@email.com">church@email.com</a>
-            </div>
-            -->
-        </div>
-        <!-- [FB BLOCK] Uncomment if Facebook available
-        <div class="church-footer">
-            <a href="https://facebook.com/PAGE-NAME-HERE"
-               class="church-fb" target="_blank" rel="noopener">
-                <i class="fab fa-facebook-f"></i> View on Facebook
-            </a>
-        </div>
-        -->
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         20. KILINOCHCHI
-         ═══════════════════════════════════════════ -->
-    <div class="church-card"
-         data-name="kilinochchi baptist church northern province"
-         data-district="kilinochchi">
-        <div class="church-logo-wrap">
-            <img src="images/churches/kilinochchi.png"
-                 alt="Kilinochchi Baptist Church Logo"
-                 class="church-logo-img"
-                 onerror="this.style.display='none'">
-            <div class="church-logo-fallback"><i class="fas fa-church"></i></div>
-            <span class="church-district">Kilinochchi</span>
-        </div>
-        <div class="church-body">
-            <h3 class="church-name">Kilinochchi Baptist Church</h3>
-            <div class="church-detail">
-                <i class="fas fa-map-marker-alt"></i>
-                <span><!-- Add full address --> Kilinochchi, Northern Province</span>
-            </div>
-            <div class="church-detail">
-                <i class="fas fa-phone"></i>
-                <a href="tel:+94213121079">+94 21 312 1079</a>
-            </div>
-            <!-- [EMAIL BLOCK] Uncomment & fill in if available
-            <div class="church-detail">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:church@email.com">church@email.com</a>
-            </div>
-            -->
-        </div>
-        <!-- [FB BLOCK] Uncomment if Facebook available
-        <div class="church-footer">
-            <a href="https://facebook.com/PAGE-NAME-HERE"
-               class="church-fb" target="_blank" rel="noopener">
-                <i class="fab fa-facebook-f"></i> View on Facebook
-            </a>
-        </div>
-        -->
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         21. KOTIKAWATTA
-         ═══════════════════════════════════════════ -->
-    <div class="church-card"
-         data-name="kotikawatta baptist church colombo"
-         data-district="colombo">
-        <div class="church-logo-wrap">
-            <img src="images/churches/kotikawatta.png"
-                 alt="Kotikawatta Baptist Church Logo"
-                 class="church-logo-img"
-                 onerror="this.style.display='none'">
-            <div class="church-logo-fallback"><i class="fas fa-church"></i></div>
-            <span class="church-district">Colombo</span>
-        </div>
-        <div class="church-body">
-            <h3 class="church-name">Kotikawatta Baptist Church</h3>
-            <div class="church-detail">
-                <i class="fas fa-map-marker-alt"></i>
-                <span><!-- Add full address --> Kotikawatta, Colombo District</span>
-            </div>
-            <div class="church-detail">
-                <i class="fas fa-phone"></i>
-                <a href="tel:+94112568044">+94 11 256 8044</a>
-            </div>
-            <!-- [EMAIL BLOCK] Uncomment & fill in if available
-            <div class="church-detail">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:church@email.com">church@email.com</a>
-            </div>
-            -->
-        </div>
-        <!-- [FB BLOCK] Uncomment if Facebook available
-        <div class="church-footer">
-            <a href="https://facebook.com/PAGE-NAME-HERE"
-               class="church-fb" target="_blank" rel="noopener">
-                <i class="fab fa-facebook-f"></i> View on Facebook
-            </a>
-        </div>
-        -->
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         22. MADAMPE
-         ═══════════════════════════════════════════ -->
-    <div class="church-card"
-         data-name="madampe baptist church puttalam"
-         data-district="puttalam">
-        <div class="church-logo-wrap">
-            <img src="images/churches/madampe.png"
-                 alt="Madampe Baptist Church Logo"
-                 class="church-logo-img"
-                 onerror="this.style.display='none'">
-            <div class="church-logo-fallback"><i class="fas fa-church"></i></div>
-            <span class="church-district">Puttalam</span>
-        </div>
-        <div class="church-body">
-            <h3 class="church-name">Madampe Baptist Church</h3>
-            <div class="church-detail">
-                <i class="fas fa-map-marker-alt"></i>
-                <span><!-- Add full address --> Madampe, Puttalam District</span>
-            </div>
-            <div class="church-detail">
-                <i class="fas fa-phone"></i>
-                <a href="tel:+94322247658">+94 32 224 7658</a>
-            </div>
-            <!-- [EMAIL BLOCK] Uncomment & fill in if available
-            <div class="church-detail">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:church@email.com">church@email.com</a>
-            </div>
-            -->
-        </div>
-        <!-- [FB BLOCK] Uncomment if Facebook available
-        <div class="church-footer">
-            <a href="https://facebook.com/PAGE-NAME-HERE"
-               class="church-fb" target="_blank" rel="noopener">
-                <i class="fab fa-facebook-f"></i> View on Facebook
-            </a>
-        </div>
-        -->
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         23. MAKEWITA
-         ═══════════════════════════════════════════ -->
-    <div class="church-card"
-         data-name="makewita baptist church gampaha"
-         data-district="gampaha">
-        <div class="church-logo-wrap">
-            <img src="images/churches/makewita.png"
-                 alt="Makewita Baptist Church Logo"
-                 class="church-logo-img"
-                 onerror="this.style.display='none'">
-            <div class="church-logo-fallback"><i class="fas fa-church"></i></div>
-            <span class="church-district">Gampaha</span>
-        </div>
-        <div class="church-body">
-            <h3 class="church-name">Makewita Baptist Church</h3>
-            <div class="church-detail">
-                <i class="fas fa-map-marker-alt"></i>
-                <span><!-- Add full address --> Makewita, Gampaha District</span>
-            </div>
-            <div class="church-detail">
-                <i class="fas fa-phone"></i>
-                <a href="tel:+94332220844">+94 33 222 0844</a>
-            </div>
-            <!-- [EMAIL BLOCK] Uncomment & fill in if available
-            <div class="church-detail">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:church@email.com">church@email.com</a>
-            </div>
-            -->
-        </div>
-        <!-- [FB BLOCK] Uncomment if Facebook available
-        <div class="church-footer">
-            <a href="https://facebook.com/PAGE-NAME-HERE"
-               class="church-fb" target="_blank" rel="noopener">
-                <i class="fab fa-facebook-f"></i> View on Facebook
-            </a>
-        </div>
-        -->
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         24. MATALE
-         ═══════════════════════════════════════════ -->
-    <div class="church-card"
-         data-name="matale baptist church matale district"
-         data-district="matale">
-        <div class="church-logo-wrap">
-            <img src="images/churches/matale.png"
-                 alt="Matale Baptist Church Logo"
-                 class="church-logo-img"
-                 onerror="this.style.display='none'">
-            <div class="church-logo-fallback"><i class="fas fa-church"></i></div>
-            <span class="church-district">Matale</span>
-        </div>
-        <div class="church-body">
-            <h3 class="church-name">Matale Baptist Church</h3>
-            <div class="church-detail">
-                <i class="fas fa-map-marker-alt"></i>
-                <span><!-- Add full address --> Matale, Matale District</span>
-            </div>
-            <div class="church-detail">
-                <i class="fas fa-phone"></i>
-                <a href="tel:+94662233706">+94 66 223 3706</a>
-            </div>
-            <!-- [EMAIL BLOCK] Uncomment & fill in if available
-            <div class="church-detail">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:church@email.com">church@email.com</a>
-            </div>
-            -->
-        </div>
-        <!-- [FB BLOCK] Uncomment if Facebook available
-        <div class="church-footer">
-            <a href="https://facebook.com/PAGE-NAME-HERE"
-               class="church-fb" target="_blank" rel="noopener">
-                <i class="fab fa-facebook-f"></i> View on Facebook
-            </a>
-        </div>
-        -->
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         25. MATTAKKULIYA
-         ═══════════════════════════════════════════ -->
-    <div class="church-card"
-         data-name="mattakkuliya baptist church colombo 15"
-         data-district="colombo">
-        <div class="church-logo-wrap">
-            <img src="images/churches/mattakkuliya.png"
-                 alt="Mattakkuliya Baptist Church Logo"
-                 class="church-logo-img"
-                 onerror="this.style.display='none'">
-            <div class="church-logo-fallback"><i class="fas fa-church"></i></div>
-            <span class="church-district">Colombo</span>
-        </div>
-        <div class="church-body">
-            <h3 class="church-name">Mattakkuliya Baptist Church</h3>
-            <div class="church-detail">
-                <i class="fas fa-map-marker-alt"></i>
-                <span><!-- Add full address --> Mattakkuliya, Colombo 15</span>
-            </div>
-            <div class="church-detail">
-                <i class="fas fa-phone"></i>
-                <a href="tel:+94112521599">+94 11 252 1599</a>
-            </div>
-            <!-- [EMAIL BLOCK] Uncomment & fill in if available
-            <div class="church-detail">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:church@email.com">church@email.com</a>
-            </div>
-            -->
-        </div>
-        <!-- [FB BLOCK] Uncomment if Facebook available
-        <div class="church-footer">
-            <a href="https://facebook.com/PAGE-NAME-HERE"
-               class="church-fb" target="_blank" rel="noopener">
-                <i class="fab fa-facebook-f"></i> View on Facebook
-            </a>
-        </div>
-        -->
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         26. MORATUWA
-         ═══════════════════════════════════════════ -->
-    <div class="church-card"
-         data-name="moratuwa baptist church colombo district"
-         data-district="colombo">
-        <div class="church-logo-wrap">
-            <img src="images/churches/Moratuwa.jpg"
-                 alt="Moratuwa Baptist Church Logo"
-                 class="church-logo-img"
-                 onerror="this.style.display='none'">
-            <div class="church-logo-fallback"><i class="fas fa-church"></i></div>
-            <span class="church-district">Colombo</span>
-        </div>
-        <div class="church-body">
-            <h3 class="church-name">Moratuwa Baptist Church</h3>
-            <div class="church-detail">
-                <i class="fas fa-map-marker-alt"></i>
-                <span><!-- Add full address --> Moratuwa, Colombo District</span>
-            </div>
-            <div class="church-detail">
-                <i class="fas fa-phone"></i>
-                <a href="tel:+94112647672">+94 11 264 7672</a>
-            </div>
-            <!-- [EMAIL BLOCK] Uncomment & fill in if available
-            <div class="church-detail">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:church@email.com">church@email.com</a>
-            </div>
-            -->
-        </div>
-        <div class="church-footer">
-            <a href="https://www.facebook.com/BaptistChurchMoratuwa"
-               class="church-fb" target="_blank" rel="noopener">
-                <i class="fab fa-facebook-f"></i> View on Facebook
-            </a>
-        </div>
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         27. NUGEGODA
-         ═══════════════════════════════════════════ -->
-    <div class="church-card"
-         data-name="nugegoda baptist church colombo"
-         data-district="colombo">
-        <div class="church-logo-wrap">
-            <img src="images/churches/nugegoda.png"
-                 alt="Nugegoda Baptist Church Logo"
-                 class="church-logo-img"
-                 onerror="this.style.display='none'">
-            <div class="church-logo-fallback"><i class="fas fa-church"></i></div>
-            <span class="church-district">Colombo</span>
-        </div>
-        <div class="church-body">
-            <h3 class="church-name">Nugegoda Baptist Church</h3>
-            <div class="church-detail">
-                <i class="fas fa-map-marker-alt"></i>
-                <span><!-- Add full address --> Nugegoda, Colombo District</span>
-            </div>
-            <div class="church-detail">
-                <i class="fas fa-phone"></i>
-                <a href="tel:+94112811700">+94 11 281 1700</a>
-            </div>
-            <!-- [EMAIL BLOCK] Uncomment & fill in if available
-            <div class="church-detail">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:church@email.com">church@email.com</a>
-            </div>
-            -->
-        </div>
-        <!-- [FB BLOCK] Uncomment if Facebook available
-        <div class="church-footer">
-            <a href="https://facebook.com/PAGE-NAME-HERE"
-               class="church-fb" target="_blank" rel="noopener">
-                <i class="fab fa-facebook-f"></i> View on Facebook
-            </a>
-        </div>
-        -->
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         28. PELAHELA (DOMPE)
-         ═══════════════════════════════════════════ -->
-    <div class="church-card"
-         data-name="pelahela dompe baptist church gampaha"
-         data-district="gampaha">
-        <div class="church-logo-wrap">
-            <img src="images/churches/pelahela.png"
-                 alt="Pelahela Baptist Church Logo"
-                 class="church-logo-img"
-                 onerror="this.style.display='none'">
-            <div class="church-logo-fallback"><i class="fas fa-church"></i></div>
-            <span class="church-district">Gampaha</span>
-        </div>
-        <div class="church-body">
-            <h3 class="church-name">Pelahela Baptist Church</h3>
-            <div class="church-detail">
-                <i class="fas fa-map-marker-alt"></i>
-                <span><!-- Add full address --> Pelahela, Dompe, Gampaha District</span>
-            </div>
-            <!-- [PHONE BLOCK] Uncomment & fill in if available
-            <div class="church-detail">
-                <i class="fas fa-phone"></i>
-                <a href="tel:+94XXXXXXXXX">+94 XX XXX XXXX</a>
-            </div>
-            -->
-            <!-- [EMAIL BLOCK] Uncomment & fill in if available
-            <div class="church-detail">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:church@email.com">church@email.com</a>
-            </div>
-            -->
-        </div>
-        <!-- [FB BLOCK] Uncomment if Facebook available
-        <div class="church-footer">
-            <a href="https://facebook.com/PAGE-NAME-HERE"
-               class="church-fb" target="_blank" rel="noopener">
-                <i class="fab fa-facebook-f"></i> View on Facebook
-            </a>
-        </div>
-        -->
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         29. RATNAPURA
-         ═══════════════════════════════════════════ -->
-    <div class="church-card"
-         data-name="ratnapura baptist church ratnapura district"
-         data-district="ratnapura">
-        <div class="church-logo-wrap">
-            <img src="images/churches/ratnapura.png"
-                 alt="Ratnapura Baptist Church Logo"
-                 class="church-logo-img"
-                 onerror="this.style.display='none'">
-            <div class="church-logo-fallback"><i class="fas fa-church"></i></div>
-            <span class="church-district">Ratnapura</span>
-        </div>
-        <div class="church-body">
-            <h3 class="church-name">Ratnapura Baptist Church</h3>
-            <div class="church-detail">
-                <i class="fas fa-map-marker-alt"></i>
-                <span><!-- Add full address --> Ratnapura, Ratnapura District</span>
-            </div>
-            <div class="church-detail">
-                <i class="fas fa-phone"></i>
-                <a href="tel:+94452232278">+94 45 223 2278</a>
-            </div>
-            <!-- [EMAIL BLOCK] Uncomment & fill in if available
-            <div class="church-detail">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:church@email.com">church@email.com</a>
-            </div>
-            -->
-        </div>
-        <!-- [FB BLOCK] Uncomment if Facebook available
-        <div class="church-footer">
-            <a href="https://facebook.com/PAGE-NAME-HERE"
-               class="church-fb" target="_blank" rel="noopener">
-                <i class="fab fa-facebook-f"></i> View on Facebook
-            </a>
-        </div>
-        -->
-    </div>
-
-</div><!-- /church-grid -->
+</div>
 </div><!-- /container -->
 
 <!-- ===================== FOOTER ===================== -->
@@ -1487,34 +276,120 @@
 <!-- AOS -->
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
-<!-- GLOBAL SCRIPT (navbar, mobile menu, back-to-top, AOS) -->
+<!-- GLOBAL SCRIPT -->
 <script src="script.js"></script>
 
-<!-- PAGE SCRIPT: search + district filter -->
+<!-- CHURCH DATA (single source of truth — also used by church-profile.html) -->
+<script src="churches-data.js"></script>
+
+<!-- PAGE SCRIPT: render cards, search + zone + district filter -->
 <script>
 (function () {
     'use strict';
 
-    const searchInput    = document.getElementById('churchSearchInput');
-    const districtFilter = document.getElementById('districtFilter');
-    const cards          = document.querySelectorAll('.church-grid .church-card');
-    const noResults      = document.getElementById('noResults');
-    const visibleCount   = document.getElementById('visibleCount');
-    const TOTAL          = cards.length;
+    const grid            = document.getElementById('churchGrid');
+    const noResults        = document.getElementById('noResults');
+    const searchInput      = document.getElementById('churchSearchInput');
+    const zoneFilter       = document.getElementById('zoneFilter');
+    const districtFilter   = document.getElementById('districtFilter');
+    const visibleCountEl   = document.getElementById('visibleCount');
+    const totalCountEl     = document.getElementById('totalCount');
 
+    /* ---- 1. Populate the zone + district <select> options ---- */
+    Object.keys(ZONES).forEach(zoneKey => {
+        const opt = document.createElement('option');
+        opt.value = zoneKey;
+        opt.textContent = ZONES[zoneKey].name;
+        zoneFilter.appendChild(opt);
+    });
+    Object.keys(DISTRICTS).forEach(distKey => {
+        const opt = document.createElement('option');
+        opt.value = distKey;
+        opt.textContent = DISTRICTS[distKey];
+        districtFilter.appendChild(opt);
+    });
+
+    /* ---- 2. Build one church card's HTML ---- */
+    function cardHTML(church) {
+        const zone = ZONES[church.zone];
+        const districtLabel = DISTRICTS[church.district] || '';
+        const iconClass = church.icon || (church.isHQ ? 'fa-landmark' : 'fa-church');
+        const searchBlob = [
+            church.name, church.altName, church.address, zone ? zone.name : '', districtLabel
+        ].filter(Boolean).join(' ').toLowerCase();
+
+        const logoImg = church.logo
+            ? `<img src="${church.logo}" alt="${church.name} Logo" class="church-logo-img" onerror="this.style.display='none'">`
+            : '';
+
+        const phoneRow = church.phone
+            ? `<div class="church-detail"><i class="fas fa-phone"></i><a href="tel:${church.phone.replace(/\s+/g,'')}">${church.phone}</a></div>`
+            : '';
+
+        const districtRow = districtLabel
+            ? `<div class="church-detail church-district-text"><i class="fas fa-map"></i><span>${districtLabel} District</span></div>`
+            : '';
+
+        const missionChips = church.missionPoints && church.missionPoints.length
+            ? `<div class="mission-points-row">
+                   <span class="mission-points-label"><i class="fas fa-map-signs"></i> Mission Points:</span>
+                   ${church.missionPoints.map(mp =>
+                        `<a class="mission-chip" href="church-profile.html?id=${church.id}#mp-${mp.id}">${mp.name.replace(' Mission Station','')}</a>`
+                   ).join('')}
+               </div>`
+            : '';
+
+        const fbLink = church.facebook
+            ? `<a href="${church.facebook}" class="church-fb" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i> Facebook</a>`
+            : '';
+
+        return `
+        <div class="church-card${church.isHQ ? ' hq' : ''}" data-name="${searchBlob}" data-zone="${church.zone}" data-district="${church.district}">
+            <div class="church-logo-wrap">
+                ${logoImg}
+                <div class="church-logo-fallback"><i class="fas ${iconClass}"></i></div>
+                <span class="church-zone">${zone ? zone.short : ''}</span>
+            </div>
+            <div class="church-body">
+                <h3 class="church-name">${church.name}</h3>
+                <div class="church-detail">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>${church.address}</span>
+                </div>
+                ${districtRow}
+                ${phoneRow}
+                ${missionChips}
+            </div>
+            <div class="church-footer">
+                ${fbLink}
+                <a href="church-profile.html?id=${church.id}" class="church-more-info">
+                    More Info <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>`;
+    }
+
+    /* ---- 3. Render all cards once ---- */
+    grid.insertAdjacentHTML('afterbegin', CHURCHES.map(cardHTML).join(''));
+    const cards = grid.querySelectorAll('.church-card');
+    totalCountEl.textContent = cards.length;
+
+    /* ---- 4. Search + zone + district filter (all combine with AND) ---- */
     function filterChurches() {
         const query    = searchInput.value.toLowerCase().trim();
-        const district = districtFilter.value.toLowerCase();
+        const zone     = zoneFilter.value;
+        const district = districtFilter.value;
         let shown = 0;
 
         cards.forEach(card => {
-            const name     = card.dataset.name     || '';
-            const cardDist = card.dataset.district || '';
-
+            const name = card.dataset.name || '';
+            const cardZone = card.dataset.zone || '';
+            const cardDistrict = card.dataset.district || '';
             const matchesSearch   = !query    || name.includes(query);
-            const matchesDistrict = !district || cardDist === district;
+            const matchesZone     = !zone     || cardZone === zone;
+            const matchesDistrict = !district || cardDistrict === district;
 
-            if (matchesSearch && matchesDistrict) {
+            if (matchesSearch && matchesZone && matchesDistrict) {
                 card.style.display = '';
                 shown++;
             } else {
@@ -1522,22 +397,37 @@
             }
         });
 
-        visibleCount.textContent = shown;
-        noResults.style.display  = shown === 0 ? 'block' : 'none';
+        visibleCountEl.textContent = shown;
+        noResults.style.display = shown === 0 ? 'block' : 'none';
     }
 
-    searchInput?.addEventListener('input',  filterChurches);
-    districtFilter?.addEventListener('change', filterChurches);
+    searchInput.addEventListener('input', filterChurches);
+    zoneFilter.addEventListener('change', filterChurches);
+    districtFilter.addEventListener('change', filterChurches);
 
-    // Expose for the "Clear Search" button
     window.clearSearch = function () {
-        searchInput.value        = '';
-        districtFilter.value     = '';
+        searchInput.value    = '';
+        zoneFilter.value     = '';
+        districtFilter.value = '';
         filterChurches();
     };
 
-    // Initialise total count
-    visibleCount.textContent = TOTAL;
+    filterChurches();
+
+    /* ---- 5. Keep the sticky search bar locked exactly below the
+       real navbar height (page-scoped fix — no global.css touch) ---- */
+    function syncStickyOffset() {
+        const navbar = document.querySelector('.navbar');
+        const bar    = document.querySelector('.search-bar-wrap');
+        if (navbar && bar && window.innerWidth > 600) {
+            bar.style.top = navbar.getBoundingClientRect().height + 'px';
+        } else if (bar) {
+            bar.style.top = '0px';
+        }
+    }
+    window.addEventListener('load', syncStickyOffset);
+    window.addEventListener('resize', syncStickyOffset);
+    syncStickyOffset();
 })();
 </script>
 

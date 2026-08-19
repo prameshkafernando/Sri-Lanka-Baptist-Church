@@ -162,6 +162,15 @@ document.addEventListener("DOMContentLoaded", () => {
         if (aboutTrigger) aboutTrigger.classList.add('active');
     }
 
+    /* ── Churches group ───────────────────────────────────────────── */
+    const churchesGroup = ['churches', 'church-profile'];
+    if (churchesGroup.includes(currentPage)) {
+        const churchesTrigger = document.querySelector(
+            '.nav-links a[href="churches.html"], .nav-links a[href="churches"]'
+        );
+        if (churchesTrigger) churchesTrigger.classList.add('active');
+    }
+
     /* ── Ministries group ─────────────────────────────────────────── */
     const ministryGroup = ['slbs', 'bypa', 'bwl', 'bmf'];
     if (ministryGroup.includes(currentPage)) {

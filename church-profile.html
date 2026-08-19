@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sri Lanka Baptist Church – Church profile with pastor, ministry statistics and mission points.">
+    <title id="pageTitle">Church Profile | Sri Lanka Baptist Church</title>
+
+    <link rel="stylesheet" href="CSS/global.css">
+    <link rel="stylesheet" href="CSS/churches.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+</head>
+
+<body>
+
+<!-- ===================== HEADER ===================== -->
+<header>
+    <div class="top-header">
+        <div class="container">
+            <div class="top-left">
+                <a href="mailto:slbc@srilankabaptistchurch.lk"><i class="fas fa-envelope"></i> slbc@srilankabaptistchurch.lk</a>
+            </div>
+            <div class="top-right">
+                <a href="https://www.facebook.com/p/Sri-Lanka-Baptist-Church-61569196400970/"
+                   target="_blank" rel="noopener" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://youtube.com/@baptistchurchsrilanka?si=beuBPx-tl2Hs2eVi" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.jpg" alt="Sri Lanka Baptist Church Logo">
+                <h2>Sri Lanka Baptist Church</h2>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="about.html">About Us <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="about.html">About SLBC</a></li>
+                        <li><a href="history.html">Our History</a></li>
+                        <li><a href="careycollege.html">Carey College</a></li>
+                    </ul>
+                </li>
+                <li><a href="churches.html" class="active">Churches</a></li>
+                <li class="dropdown">
+                    <a href="#">Ministries <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="SLBS.html">Sunday School</a></li>
+                        <li><a href="BYPA.html">Young People's Auxiliary</a></li>
+                        <li><a href="BWL.html">Women's League</a></li>
+                        <li><a href="BMF.html">Men's Fellowship</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="menu-btn" aria-label="Open menu" role="button" tabindex="0">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- ===================== PAGE HERO ===================== -->
+<section class="page-hero churches-hero">
+    <div class="page-hero-content" data-aos="fade-up">
+        <span class="section-eyebrow" id="heroZone">Church Profile</span>
+        <h1 id="heroName">Loading…</h1>
+        <p id="heroAddress"></p>
+    </div>
+</section>
+
+<!-- ===================== BREADCRUMB ===================== -->
+<div style="background:var(--light-bg); padding:14px 0; border-bottom:1px solid var(--border);">
+    <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb" style="justify-content:flex-start; opacity:1;">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <span style="color:var(--text-light);">/</span>
+            <a href="churches.html">Churches</a>
+            <span style="color:var(--text-light);">/</span>
+            <span id="heroCrumb" style="color:var(--deep-blue); font-weight:600;">Profile</span>
+        </nav>
+    </div>
+</div>
+
+<!-- ===================== PROFILE CONTENT (rendered by JS) ===================== -->
+<section class="section">
+    <div class="container" id="profileRoot">
+        <!-- populated by script below -->
+    </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+    <div class="container footer-grid">
+
+        <div class="footer-column">
+            <img src="images/logo.jpg" alt="Sri Lanka Baptist Church Logo" class="footer-logo">
+            <h3>Sri Lanka Baptist Church</h3>
+            <p>Preach the word. Reach the world.</p>
+        </div>
+
+        <div class="footer-column">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="churches.html">Churches</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h4>Ministries</h4>
+            <ul>
+                <li><a href="SLBS.html">Sunday School</a></li>
+                <li><a href="BYPA.html">Young People's Auxiliary</a></li>
+                <li><a href="BWL.html">Women's League</a></li>
+                <li><a href="BMF.html">Men's Fellowship</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h4>Contact</h4>
+            <p><a href="mailto:info@srilankabaptistchurch.lk"><i class="fas fa-envelope"></i> info@srilankabaptistchurch.lk</a></p>
+            <p><a href="tel:+94777675019"><i class="fas fa-phone"></i> +94 77 767 5019</a></p>
+            <div class="footer-social">
+                <a href="https://www.facebook.com/p/Sri-Lanka-Baptist-Church-61569196400970/"
+                   target="_blank" rel="noopener" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://youtube.com/@baptistchurchsrilanka?si=beuBPx-tl2Hs2eVi" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+    </div>
+    <div class="footer-bottom">
+        &copy; 2026 Sri Lanka Baptist Church. All Rights Reserved.
+    </div>
+</footer>
+
+<a href="https://www.facebook.com/p/Sri-Lanka-Baptist-Church-61569196400970/"
+   class="fb-float" target="_blank" rel="noopener" aria-label="Visit our Facebook page">
+    <i class="fab fa-facebook-f"></i>
+</a>
+<button id="topBtn" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script src="script.js"></script>
+<script src="churches-data.js"></script>
+
+<script>
+(function () {
+    'use strict';
+
+    const STAT_LABELS = {
+        membership: 'Membership', families: 'Number of Families',
+        ssStudents: 'Sunday School Students', ssTeachers: 'Sunday School Teachers',
+        ssClasses: 'Sunday School Classes', brotherhood: 'Brotherhood Members',
+        womensSociety: "Women's Society Members", youthSociety: 'Youth Society Members',
+        convertedChristians: 'Converted Christians', convertedOtherReligions: 'Converted from Other Religions',
+        sundayWorship: 'Sunday Worship Services', bibleStudies: 'Bible Studies',
+        missionStations: 'Mission Stations', prayerMeetings: 'Prayer Meetings',
+        otherProjects: 'Other Projects'
+    };
+
+    const params   = new URLSearchParams(window.location.search);
+    const churchId = params.get('id');
+    const church    = CHURCHES.find(c => c.id === churchId);
+    const root      = document.getElementById('profileRoot');
+
+    if (!church) {
+        document.getElementById('heroName').textContent = 'Church Not Found';
+        document.getElementById('heroZone').textContent  = 'Church Profile';
+        root.innerHTML = `
+            <div class="no-results" style="padding:20px 0 60px;">
+                <i class="fas fa-map-marker-alt"></i>
+                <p>We couldn't find a church with that ID. It may have been renamed or moved.</p>
+                <a href="churches.html" class="btn btn-primary" style="margin-top:10px;">
+                    <i class="fas fa-arrow-left"></i>&nbsp; Back to Church Directory
+                </a>
+            </div>`;
+        return;
+    }
+
+    const zone = ZONES[church.zone];
+    const districtLabel = DISTRICTS[church.district] || '';
+
+    /* ---- Hero ---- */
+    document.title = church.name + ' | Sri Lanka Baptist Church';
+    document.getElementById('pageTitle').textContent = document.title;
+    document.getElementById('heroZone').textContent = zone ? zone.name : 'Church Profile';
+    document.getElementById('heroName').textContent = church.name;
+    document.getElementById('heroAddress').textContent = church.address || '';
+    document.getElementById('heroCrumb').textContent = church.name;
+
+    /* ---- Contact / pastor card ---- */
+    const iconClass = church.icon || (church.isHQ ? 'fa-landmark' : 'fa-church');
+    const logoImg = church.logo
+        ? `<img src="${church.logo}" alt="${church.name} Logo" class="church-logo-img" onerror="this.style.display='none'">`
+        : '';
+
+    let html = `
+    <div class="profile-grid">
+        <div class="profile-card" data-aos="fade-right">
+            <div class="church-logo-wrap" style="height:170px;">
+                ${logoImg}
+                <div class="church-logo-fallback"><i class="fas ${iconClass}"></i></div>
+                <span class="church-zone">${zone ? zone.short : ''}</span>
+            </div>
+            <div class="profile-card-body">
+                ${church.altName ? `<p class="profile-altname">Also known as: ${church.altName}</p>` : ''}
+                <div class="church-detail"><i class="fas fa-map-marker-alt"></i><span>${church.address || 'Address not yet available'}</span></div>
+                ${districtLabel ? `<div class="church-detail"><i class="fas fa-map"></i><span>${districtLabel} District</span></div>` : ''}
+                ${church.phone ? `<div class="church-detail"><i class="fas fa-phone"></i><a href="tel:${church.phone.replace(/\s+/g,'')}">${church.phone}</a></div>` : ''}
+                ${church.facebook ? `<div class="church-detail"><i class="fab fa-facebook-f"></i><a href="${church.facebook}" target="_blank" rel="noopener">View on Facebook</a></div>` : ''}
+                ${church.pastor ? `<hr class="profile-divider">
+                    <div class="church-detail"><i class="fas fa-user-tie"></i><span><strong>${church.pastor.name}</strong>${church.pastor.term ? `<br><span class="profile-term">${church.pastor.term}</span>` : ''}</span></div>` : ''}
+            </div>
+            <a href="churches.html" class="church-more-info" style="margin:0 20px 20px;">
+                <i class="fas fa-arrow-left"></i> Back to Directory
+            </a>
+        </div>
+
+        <div class="profile-main" data-aos="fade-left">
+            ${church.history ? `
+            <h3 class="profile-section-title">Our History</h3>
+            <div class="profile-history"><p>${church.history}</p></div>` : ''}
+
+            <h3 class="profile-section-title">Photo Album</h3>
+            <div class="profile-gallery">
+                ${church.gallery && church.gallery.length
+                    ? church.gallery.slice(0, 6).map((src, i) => `
+                        <div class="gallery-item">
+                            <img src="${src}" alt="${church.name} photo ${i + 1}" loading="lazy"
+                                 onerror="this.closest('.gallery-item').classList.add('gallery-placeholder'); this.remove();">
+                        </div>`).join('')
+                    : Array(4).fill(0).map(() => `
+                        <div class="gallery-item gallery-placeholder">
+                            <i class="fas fa-image"></i>
+                            <span>Photo coming soon</span>
+                        </div>`).join('')}
+            </div>
+
+            ${church.stats ? `
+            <h3 class="profile-section-title">Ministry Snapshot</h3>
+            <div class="profile-stats-grid">
+                ${Object.keys(STAT_LABELS).filter(k => church.stats[k] !== undefined).map(k => `
+                    <div class="profile-stat">
+                        <div class="profile-stat-number">${church.stats[k]}</div>
+                        <div class="profile-stat-label">${STAT_LABELS[k]}</div>
+                    </div>`).join('')}
+            </div>` : ''}
+
+            ${church.missionPoints.length ? `
+            <h3 class="profile-section-title">Mission Points Overseen by This Church</h3>
+            <div class="mission-point-list">
+                ${church.missionPoints.map(mp => `
+                    <div class="mission-point-card" id="mp-${mp.id}">
+                        <h4><i class="fas fa-map-signs"></i> ${mp.name}</h4>
+                        <p class="mission-point-supervisor">Supervised by ${mp.supervisor}</p>
+                        <p>${mp.description}</p>
+                    </div>`).join('')}
+            </div>` : ''}
+        </div>
+    </div>`;
+
+    root.innerHTML = html;
+
+    /* If arriving via a #mp-xxxx link, give it a brief highlight */
+    if (window.location.hash) {
+        const target = document.querySelector(window.location.hash);
+        if (target) {
+            setTimeout(() => target.classList.add('mission-point-highlight'), 200);
+        }
+    }
+})();
+</script>
+
+</body>
+</html>
