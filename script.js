@@ -171,6 +171,15 @@ document.addEventListener("DOMContentLoaded", () => {
         if (churchesTrigger) churchesTrigger.classList.add('active');
     }
 
+    /* ── Mission Points group ─────────────────────────────────────── */
+    const missionPointsGroup = ['mission-points', 'mission-point-profile'];
+    if (missionPointsGroup.includes(currentPage)) {
+        const missionPointsTrigger = document.querySelector(
+            '.nav-links a[href="mission-points.html"], .nav-links a[href="mission-points"]'
+        );
+        if (missionPointsTrigger) missionPointsTrigger.classList.add('active');
+    }
+
     /* ── Ministries group ─────────────────────────────────────────── */
     const ministryGroup = ['slbs', 'bypa', 'bwl', 'bmf'];
     if (ministryGroup.includes(currentPage)) {
