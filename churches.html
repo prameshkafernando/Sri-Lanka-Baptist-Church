@@ -156,7 +156,7 @@
             </div>
             <div class="stat-item">
                 <div class="stat-number">30+</div>
-                <div class="stat-label">Churches &amp; Mission Points</div>
+                <div class="stat-label">Churches & Mission Points</div>
             </div>
             <div class="stat-item">
                 <div class="stat-number">36</div>
@@ -166,7 +166,7 @@
     </div>
 </div>
 
-<!-- ===================== SEARCH BAR (sticky) ===================== -->
+<!-- ===================== SEARCH BAR ===================== -->
 <div class="search-bar-wrap" id="directory">
     <div class="container">
         <div class="search-bar-inner">
@@ -415,94 +415,6 @@
     };
 
     filterChurches();
-
-    /* ---- 5. Sticky search bar, with a self-correcting fallback ----
-       Native `position: sticky` on .search-bar-wrap (see churches.css)
-       is the default. Some browsers (notably older/some Safari
-       versions) fail to honour sticky when an ancestor — here,
-       <body>, via global.css's site-wide `overflow-x: hidden` —
-       has a non-visible overflow; the bar then just scrolls away
-       with the page instead of locking under the navbar. Rather than
-       assume which behaviour a visitor's browser has, this script
-       measures the bar's real on-screen position after it should
-       have stuck and, only if native sticky did NOT hold, force-pins
-       it with position:fixed via the .search-bar-pinned class. If
-       native sticky IS working, this never engages. Entirely
-       page-scoped — no changes to global.css or the shared header. */
-    (function () {
-        const navbar = document.querySelector('.navbar');
-        const bar    = document.querySelector('.search-bar-wrap');
-        if (!bar) return;
-
-        const spacer = document.createElement('div');
-        spacer.className = 'search-bar-spacer';
-        bar.parentNode.insertBefore(spacer, bar.nextSibling);
-
-        let offset        = 76;
-        let flowTop        = null;   // bar's natural (unpinned) document-relative top
-        let fallbackNeeded = null;   // null = not yet decided, true/false once decided
-
-        function computeOffset() {
-            offset = (navbar && window.innerWidth > 600)
-                ? navbar.getBoundingClientRect().height
-                : 0;
-            bar.style.top = offset + 'px';
-        }
-
-        function measureFlowTop() {
-            if (bar.classList.contains('search-bar-pinned')) return;
-            flowTop = bar.getBoundingClientRect().top + window.scrollY;
-        }
-
-        function setPinned(on) {
-            if (on === bar.classList.contains('search-bar-pinned')) return;
-            if (on) {
-                spacer.style.height = bar.offsetHeight + 'px';
-                bar.classList.add('search-bar-pinned');
-                spacer.classList.add('active');
-            } else {
-                bar.classList.remove('search-bar-pinned');
-                spacer.classList.remove('active');
-                measureFlowTop();
-            }
-        }
-
-        function handleScroll() {
-            if (flowTop === null) return;
-            const pastThreshold = window.scrollY + offset >= flowTop - 1;
-
-            if (fallbackNeeded === null) {
-                if (!pastThreshold) return; // nothing to test yet
-                // Give the browser a frame to apply native sticky, then check.
-                requestAnimationFrame(() => {
-                    const stillPastThreshold = window.scrollY + offset >= flowTop - 1;
-                    if (!stillPastThreshold) return;
-                    const r = bar.getBoundingClientRect();
-                    fallbackNeeded = Math.abs(r.top - offset) > 3;
-                    if (fallbackNeeded) setPinned(true);
-                });
-                return;
-            }
-
-            if (fallbackNeeded) setPinned(pastThreshold);
-        }
-
-        function init() {
-            computeOffset();
-            measureFlowTop();
-            fallbackNeeded = null;
-            handleScroll();
-        }
-
-        window.addEventListener('load', init);
-        window.addEventListener('resize', () => {
-            computeOffset();
-            if (!bar.classList.contains('search-bar-pinned')) measureFlowTop();
-            handleScroll();
-        });
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        init();
-    })();
 })();
 </script>
 
