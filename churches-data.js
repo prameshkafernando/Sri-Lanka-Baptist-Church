@@ -1,5 +1,5 @@
 /* ============================================================
-   Sri Lanka Baptist Sangamaya — Church & Mission Point Data
+   Sri Lanka Baptist Church — Church & Mission Point Data
    ------------------------------------------------------------
    Single source of truth used by BOTH churches.html (directory
    grid + zone filter) and church-profile.html (detail pages).
@@ -483,7 +483,7 @@ const CHURCHES = [
         logo: "Images/Churches/habarana.png",
         facebook: null,
         pastor: { name: "Rev. Gayan Gunasekara", term: "From 1 January 2025" },
-        history: "Baptist ministry reached Sri Lanka's North Central Province in 1902, but the Habarana mission itself began in 1976 under Rev. Denzil Jayamanne, first meeting in a rented house before settling near Habarana Wewa. The mission faced serious opposition in its early years, which forced a pause in services around 2000, before it regathered as a smaller congregation and secured land through the Sri Lanka Baptist Sangamaya for a permanent building on the Colombo–Trincomalee Road. Through a succession of pastors and workers, the church has continued its mission of restoration and outreach in a historically difficult region.",
+        history: "Baptist ministry reached Sri Lanka's North Central Province in 1902, but the Habarana mission itself began in 1976 under Rev. Denzil Jayamanne, first meeting in a rented house before settling near Habarana Wewa. The mission faced serious opposition in its early years, which forced a pause in services around 2000, before it regathered as a smaller congregation and secured land through the Sri Lanka Baptist Church for a permanent building on the Colombo–Trincomalee Road. Through a succession of pastors and workers, the church has continued its mission of restoration and outreach in a historically difficult region.",
         gallery: [], // add 3-6 photo paths here later, e.g. "Images/Churches/habarana/1.jpg"
         stats: { ssStudents: 7, sundayWorship: 2, bibleStudies: 2, missionStations: 0, prayerMeetings: 2 }
     },
@@ -524,7 +524,7 @@ const CHURCHES = [
         logo: "Images/Churches/chavakachcheri.png",
         facebook: null,
         pastor: { name: "Rev. V. Moorthy", term: "1 January 2025 – 31 December 2029" },
-        history: "Chavakachcheri Baptist Church began as a Bible study group Rev. V. Moorthy started in 2015, renting a house that September to launch what was then a mission point. The congregation later moved into a temporary hall and eventually a permanent building on land purchased by the Sri Lanka Baptist Sangamaya, gaining full recognition as a church in August 2023. From this base, Rev. Moorthy has planted satellite mission points in five surrounding communities — Mullaitivu, Ilavalai, Atchuveli, Punnala Kattuwan and Thalawakalle — with the home congregation continuing Sunday worship at 8:30 a.m.",
+        history: "Chavakachcheri Baptist Church began as a Bible study group Rev. V. Moorthy started in 2015, renting a house that September to launch what was then a mission point. The congregation later moved into a temporary hall and eventually a permanent building on land purchased by the Sri Lanka Baptist Church, gaining full recognition as a church in August 2023. From this base, Rev. Moorthy has planted satellite mission points in five surrounding communities — Mullaitivu, Ilavalai, Atchuveli, Punnala Kattuwan and Thalawakalle — with the home congregation continuing Sunday worship at 8:30 a.m.",
         gallery: [], // add 3-6 photo paths here later, e.g. "Images/Churches/chavakachcheri/1.jpg"
         stats: { membership: 47, families: 25, ssStudents: 10, ssTeachers: 13, ssClasses: 7, brotherhood: 16, womensSociety: 600, youthSociety: 34, convertedChristians: 3, convertedOtherReligions: 2, sundayWorship: "-", bibleStudies: 11, missionStations: 0, prayerMeetings: 8 }
     },
@@ -567,7 +567,7 @@ const CHURCHES = [
         logo: "Images/Churches/eheliyagoda.png",
         facebook: null,
         pastor: { name: "Rev. Nishantha Malthunga", term: "1 January 2025 – 31 December 2029" },
-        history: "Eheliyagoda Baptist Church grew out of missionary work Rev. Henry Pigott began around Ratnapura in 1878, taking shape as the \"Thalawitiya Mission Station\" under Rev. Stanley Frederick Pearce by the early 1910s. Two Baptist schools, at Thalawitiya (1914) and Udumatta (1936), served the surrounding villages despite considerable local opposition through the 1920s. The Sri Lanka Baptist Sangamaya purchased land for a permanent church, dedicated in January 1979, later adding a manse and a Sunday School hall that hosted a Montessori programme from 1980. The church has now served the community for well over 140 years.",
+        history: "Eheliyagoda Baptist Church grew out of missionary work Rev. Henry Pigott began around Ratnapura in 1878, taking shape as the \"Thalawitiya Mission Station\" under Rev. Stanley Frederick Pearce by the early 1910s. Two Baptist schools, at Thalawitiya (1914) and Udumatta (1936), served the surrounding villages despite considerable local opposition through the 1920s. The Sri Lanka Baptist Church purchased land for a permanent church, dedicated in January 1979, later adding a manse and a Sunday School hall that hosted a Montessori programme from 1980. The church has now served the community for well over 140 years.",
         gallery: [], // add 3-6 photo paths here later, e.g. "Images/Churches/eheliyagoda/1.jpg"
         stats: { membership: 120, families: 115, ssStudents: 21, ssTeachers: 7, ssClasses: 8, brotherhood: 27, womensSociety: 45, youthSociety: 38, convertedChristians: 7, convertedOtherReligions: 0, sundayWorship: 1, bibleStudies: 2, missionStations: 3, prayerMeetings: 1 }
     },
